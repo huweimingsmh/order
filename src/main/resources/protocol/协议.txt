@@ -1,0 +1,645 @@
+1:登录:
+  请求:
+  路径：/bl
+  phone:手机号,pwd:密码
+  {phone:"手机号",pwd:密码}
+  返回:
+  phone:成功登录后的手机号,前端全局保存，整个项目需要手机号作参数,url:跳转首页的URL
+  {phone:"手机号,",url:"跳转首页的URL"}
+
+2:忘记密码
+  请求:
+  路径:/fbl
+ 
+  {phone:"手机号",newPwd:"密码",reNewPwd:"确认密码",checkCode="手机验证码"}
+  返回:
+    按6协议
+
+3:注册
+  请求:
+  
+  买手:
+  路径:/rbl
+ 
+  {phone:"手机号",checkCode:"手机验证码",pwd:"密码",weixin:"微信号",taobaovip:"淘宝账号",sex:"性别"}
+  商家:
+  路径:/rsl
+ 
+  {phone:"手机号",checkCode:"手机验证码",pwd:"密码",rePwd:"确认密码",qq:"qq"}
+  返回:
+  买手和商家，只是URL不一样
+  
+  {phone:"成功注册后的手机号",url:"跳转首页的URL"}
+4:手机号验证码
+  请求
+  路径：/pl
+ 
+  {phone:"手机号"}
+5:错误提示
+  业务出错返回的
+
+  {error:"错误描述"}
+6:页面跳转
+
+  {url:"跳转页面URL"}
+7:商家首页
+  返回：
+  {rmCount:"待返款订单数",zmCount:"待奖励订单数"，mCount:"待处理消息",ssCount:"待处理申诉数",cCode:"自已的邀请码",notic:[{isP:"标识是否重要,1:重要,0：不重要",title:"标题",cTime:"时间",isR:"是否已读,1:已读,0：未读"}],sMoney:"本金余额",yjMoney:"佣金余额",ytMoney:"邀请收益余额",isC:"是否免审商家,1:是,0:否"}
+8:商家账户充值
+  请求：
+   路径:/ainfo
+  ｛phone:"手机号"}
+  返回:
+  
+   [{category:"充值类别",info:"详情",cMoney:"变动金额",rMoney:"余额",tTime:"交易时间"}]
+
+9：按时间查商家账户充值
+  请求:
+  路径:/ainfobytime
+  
+  {phone:"手机号",startTime:"开始时间",endTime:"结束时间"}
+  返回:
+  
+   [{category:"充值类别",info:"详情",cMoney:"变动金额",rMoney:"余额",tTime:"交易时间"}]
+
+10:查商家转账
+   请求:
+   路径:/tinfo
+   {phone:"手机号"}
+   返回:
+   
+    [{tMoney:"转账金额",bankName:"银行名",bankNo:"银行卡号",bankPerson:"持卡人名",state:状态,aDes:"描述",submitTime:"提交时间",confirmTime:"审核时间"}]
+
+ 11:提交转账信息
+   请求
+   路径:/tadd
+   
+    [{tMoney:"转账金额",bankName:"银行名",bankNo:"银行卡号",bankPerson:"持卡人名",submitTime:"提交时间"}]
+
+ 12:审核转账信息
+   请求
+   路径:/tverify
+  
+   {id:"转账信息数据库ID",state:"设置状态",desc:"失败原因描述或其他"}
+ 13:管理员查待审核转账信息
+    请求
+    路径:/tinfo
+    
+   [{id:"转账信息数据库ID",tMoney:"转账金额",bankName:"银行名",bankNo:"银行卡号",bankPerson:"持卡人名",submitTime:"提交时间"}]
+
+14:商家充值佣金
+   请求
+   路径:/ryj
+  
+   {phone:"手机号",yongJin:"需充值佣金的金额"}
+   返回
+   
+   {selfMoney:"充值后本金余额",yongJiMoney:充值后佣金余额}
+
+15:商家收益转本金
+   请求
+   路径：/ryq
+   
+   {phone:"手机号"}
+   返回
+  
+   {selfMoney:"充值后本金余",yaoqingMoney:"充值后收益余额"}
+
+16：获得店铺列表
+   请求
+   路径:/gs
+   {phone:"手机号"}
+   返回
+  
+   [{id:"店铺数据库ID",platform:"平台",name:"店铺名",wangWang:"旺旺",state:"状态",cTime:"创建时间",desc:"不通过原因"}]
+
+17:按状态查店铺列表
+   请求
+   路径：/gss
+  
+   {phone:"手机号",state:"状态"}
+   返回id:,platform:,name:,wangWang：,state:,cTime:,desc:
+   [{id:"店铺数据库ID",platform:"平台",name:"店铺名",wangWang:"旺旺",state:"状态",cTime:"创建时间",desc:"不通过原因"}]
+
+18：建店铺
+   请求
+   路径:/sadd
+   
+   {platform:"平台",name:"店铺名",image:"店铺后台图",where:"发货地",address:"详细地址",sPhone:"发货电话,",phone:"商家手机号"}
+19：删除店铺
+    请求
+    路径:/sdel
+   
+    {id:"店铺数据库ID"}
+20：编辑店铺
+    请求
+    路径:/sedit
+    
+   {platform:"平台",name:"店铺名",image:"店铺后台图",where:"发货地",address:"详细地址",sPhone:"发货电话",phone:"商家手机号"}
+
+21:按名查店铺
+   请求
+   路径:/sgn
+  
+   ｛phone:"手机号",name:"店铺名"｝
+   返回
+   
+   [{id:"店铺数据库ID",platform:"平台",name:"店铺名",wangWang:"旺旺",state:"状态",cTime:"创建时间",desc:"不通过原因"}]
+
+
+22:商家按手机号获得申诉列表
+   请求
+   路径:/sjss
+  
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   23:获得商家发起的申诉
+   请求
+   路径:/sjsss
+   
+   ｛phone:"手机号"｝
+   返回
+  
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+ 24:获得商家收到的申诉
+   请求
+   路径:/sjssa
+   
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   25:获得买手发起的申诉
+   请求
+   路径:/sjssb
+ 
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题,",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   26:按状态获得商家的申诉列表
+   请求
+   路径:/sjssb
+  
+   ｛phone:"手机号",state:状态,1.申诉中,-1.申诉关闭,0.申诉取消｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   27:按子任务编号获得商家的申诉列表
+   请求
+   路径:/sjssstid
+  
+   {stId:"子任务编号"｝
+   返回
+ 
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   28:按商家手机号获得商家的申诉列表
+   请求
+   路径:/sjsssjphone
+ 
+   {phone:"手机号"｝
+   返回
+  
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"申诉时间"}]
+
+   29:按买手手机号获得商家的申诉列表
+   请求
+   路径:/sjssbphone
+   
+   {phone:"手机号"｝
+   返回
+  
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   30:按店铺名获得商家的申诉列表
+   请求
+   路径:/sjsssn
+   
+   {shopName:"店铺名"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+31:按接单账号获得商家的申诉列表
+   请求
+   路径:/sjssbv
+  
+   {ww:"接单账号(买手旺旺)"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   32:按任务订单号获得商家的申诉列表
+   请求
+   路径:/sjssoid
+   
+   {oid:"任务订单号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   33:发起申诉
+   请求
+   路径:/sjssc
+   
+   {title:"申诉标题",context:"申诉内容",plan:"解决方案",images:[申诉附图]}
+
+   34:发起申诉时按旺旺号获得买手的联系方式
+   请求
+   路径:/sjssgpv
+ 
+   {ww:"买手旺旺"}
+   返回
+  
+   {phone:买手手机号}
+
+   35:发起申诉时按订单号获得买手的联系方式
+   请求
+   路径:/sjssgoid
+
+   {oid:"订单号"}
+   返回
+   phone:
+   {phone:买手手机号}
+
+   36:发起申诉时按子任务获得买手的联系方式
+   请求
+   路径:/sjssgstid
+  
+   {stid:"买手旺旺"}
+   返回
+  
+   {phone:买手手机号}
+
+消息中心
+37:获得管理员消息
+   请求
+   路径:/gms
+
+   {phone:买手手机号}
+   返回
+
+   [{title:"消息标题",mtime:"时间",context:"内容"}]
+
+38:获得任务消息
+   请求
+   路径:/gmt
+
+   {phone:商家手机号}
+   返回
+  
+   [{sn:"店铺名",stid:"子任务编号",tc:"任务类型",ta:"任务账号",bp:"买手手机号",image:"任务附图"}]
+
+ 39：联系买手
+   按子任务编号联系买手
+   请求
+   路径:/gmstid
+   stid:
+   {stid:"子任务编号"}
+   返回
+  
+   {stid:子任务编号}
+
+   40:按旺旺号联系买手
+   请求
+   路径:/gmww
+
+   {ww:"买手旺旺"}
+   返回
+ 
+   {stid:子任务编号}
+
+   41:按订单号联系买手
+   请求
+   路径:/gmoid
+   
+   {oid:"订单号"}
+   返回
+ 
+   {stid:子任务编号}
+
+   42:联系买手
+   请求
+   路径:/gmc
+ 
+   {stid:子任务编号}
+   返回
+   
+   {context:"聊天内容格式[{说话方:"",context:{内容:"",时间：""}},]",stid:"子任务编号"}
+   43:查看子任务详情
+   请求
+   路径:/gmfst
+ 
+   {stid:子任务编号}
+   返回
+  
+   {url:"跳转查子任务的url"}
+
+  44：回复管理员
+   请求
+   路径:/gmbs
+  
+   {mid:"消息ID"}
+   返回
+  
+   {context:"聊天内容格式[{说话方:"",context:{内容:"",时间：""}},]",mid:"消息ID"}
+
+ 45：回复管理员消息发送
+    请求
+   路径:/gmbsc
+  
+   {mid:"消息ID",context:聊天内容格式{说话方:"",context:内容}}
+
+46：任务消息发送
+请求
+   路径:/gmstc
+  
+   {stid:"子任务编号",context:"聊天内容格式{说话方:"",context:内容}"}
+
+
+我的任务功能
+47:获得商家发布任务列表
+   请求
+   路径:/tasks
+   {phone:"商家手机号"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+48:任务详情
+   请求
+   路径/ti
+  
+   {phone:"商家手机号"}
+   返回
+   {id:"任务编号",tType:"任务类型",sjAccount:"商家账号",shopName:"店铺名",sjWangWang:"店铺主旺旺",splatform:"店铺平台",shopHome:"店铺首页",goodsLink:"商品链接",goodsName:"商品名称",goodsCost:"商品实付价格",orderCount:"每单需拍数量",orderCost:"每单合计费用",baoYou:"商品包邮",plan:"淘宝客计划",yhQuan:"是否使用优惠券",yhMoney:"优惠金额",yhAddress:"优惠券领取地址",souSuo:"淘口令搜索",keys:[{inx:"淘口令序号",context:"淘口令"}],fuJia:[1:收藏店铺,2:收藏商品,3:商品加入购物车,4:假聊],count:"单数",tShop:"浏览目标店铺",tsGoods:"浏览目标店铺商品",tGoods:"浏览目标商品",answer:"验证答案",btGoods:"购买目标商品",goodsSKU:"商品SKU实付",eobuy:"每单需拍",eoCost:"每单合计",ngEva:"普通好评",textEva:"文字好评",imgEva:"图文好评",vodeEva:"视频好评",incService:"增值任务",sjLy:"商家留言",tTask:"定时任务",pTime:"发布日期",sHour:"每天从18:00",eHour:"到22:30",oCount:"放单总量1",geFen:"每隔5分钟",poCount:"最多放出1单",taskSet:"任务设置",refund:"返款方式选择",pay:"费用合计： 11209.00元",pRefund:"平台返款：10989.00元",serviceCost:"服务费：220.00元",scTime:"提交审核时间",pcTime:"审核通过时间",cPerson:"审核操作人"}
+
+ 49：发布任务
+   请求
+   路径:/pt
+   {tType:"任务类型",goods:[{goodsLink:"商品链接",goodsName:"商品名称",shopName:"选择店铺",goodsImg:"商品主图",sku:"商品SKU实付",eCount:"每单需拍件数",eCost:"每单合计",skuDes:"SKU说明"}],
+   souSuo:"选择搜索方式,1:关键词,2:淘口令",keys:[{key:"关键词",count:"数量"}],plan:"淘宝客计划,1:已加入,0:未加入",baoYou:"商品包邮,1:是,0:否",yhQuan:"商品优惠券,1:使用,0:不使用",sort:"商品排序方式,1:综合排序,2:销量排序",gotGoods:"商品收货人数",showCost:"商品展示价格",minCost:"最小价格",maxCost:"最大价格",goodsTo:"商品发货地",answer:"设置验证答案",reAnswer:"确认验证答案",ngEva:"普通好评",textEva:[{context:"文字好评",count:"数量"}],imgEva:[{context:"图文好评",image:"",count:"数量"}],vodeEva:[{context:"视频好评",vode:"",count:"数量"}],sex:"性别限制",age:"年龄限制",weakPoint:"购买账号总周点小于等于2",bore:"仅限钻号及以上账号接单",tTask:"定时任务,1:定时任务,0:非定时任务",pTime:"发布日期",sHour:"每天从18:00",eHour:"到22:30",oCount:"放单总量1",timeSet:"1：平均发布,2:自定义发布",timeCount:[{geTime:"时间",count:"放单数"}],sjLy:{context:"留言",image:"图片"},
+   shenHe:"",pRefund:"返款方式设置，平台系统返款+买号安全"}
+
+
+51：按任务类型查询
+   请求
+   路径://ttype
+   {phone:"手机号",tType:"任务类型,1:购买任务"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+52:按任务状态查询
+   请求
+   路径://tstate
+   {phone:"手机号",state:"任务状态,1:未开始,2:进行中,3:已结束,4:待付款,5:已撤销"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+53:按发布方式查询
+   请求
+   路径://tpush
+   {phone:"手机号",tpush:"发布方式,1:定时任务,2:非定时任务"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+
+53:按领取状态查询
+   请求
+   路径://tget
+   {phone:"手机号",tget:"1:未领取完,2:已领取完"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+
+54:按商品名查询
+   请求
+   路径://tgn
+   {phone:"手机号",goodsName:"商品名"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+
+55:按店铺名查询
+   请求
+   路径://tsn
+   {phone:"手机号",shopName:"店铺名"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+   55:按任务编号查询
+   请求
+   路径://tid
+   {phone:"手机号",tid:"任务编号"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+55:按创建时间查询
+   请求
+   路径://tct
+   {phone:"手机号",ctStart:"开始时间",ctEnd:"结束时间"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+
+56:按任务定时查询
+   请求
+   路径://tdt
+   {phone:"手机号",dtStart:"任务开始时间",dtEnd:"任务结束时间"}
+   返回
+   
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+
+57:按撤销任务
+   请求
+   路径://tc
+   {tid:"任务编号"}
+   返回
+   {tid:"任务编号",state:"状态标识"}
+ 58：再次发布
+    请求
+   路径://ttpush
+   {tid:"任务编号"}
+   返回
+   [{id:"编号",count:"单数",cTime:"创建时间",goodsName:"商品名称",shopName:"店铺名称",lingQu:"待领取",gouMai:"购买中",refund:"待返款",shouHuo:"收货中",yongJin:"待返佣金",wanCheng:"已完成"}]
+    
+
+我的订单功能
+
+59:查询子任务详情
+   请求
+   路径:/pt
+   {stid:"子任务编号"}
+   返回
+   {stId:"子任务编号",shopName:"店铺名称",buyerId:"买手ID",bPhone:"买手手机号",bWangWang:"买手任务账号",bQQ:"买手QQ",souSuo:"淘口令搜索",index:"淘口令",answer:"验证答案",setMoney:"商家设置金额",payMoney:"买手实付金额",oId:"商品订单号",evaType:"评价类型"}
+
+61:订单查询
+   请求
+   路径:/ol
+   {phone:"手机号"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+62:按接单时间查询订单
+  请求
+   路径:/octl
+   {phone:"手机号",ctStart:"查询接单开始时间",ctEnd:"查询接单结束时间"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+
+  62:按任务提交时间查询订单
+  请求
+   路径:/ostl
+   {phone:"手机号",stStart:"查询接单开始时间",stEnd:"查询接单结束时间"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+
+  62:按状态查询订单
+  请求
+   路径:/ossl
+   {phone:"手机号",state:"状态,1:进行中,2:待返款,3:收货中,4:待返佣金,5:已完成,6:返款不通过,7：佣金不通过"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+63:按商品我查询订单
+  请求
+   路径:/ognsl
+   {phone:"手机号",goodsName:"商品名"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+64:按店铺名查询订单
+  请求
+   路径:/ognsl
+   {phone:"手机号",shopName:"店铺名"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+65:按接单账号查询订单
+  请求
+   路径:/ogoal
+   {phone:"手机号",buyVip:"接单账号"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+65:按子任务编号查询订单
+  请求
+   路径:/ostidl
+   {phone:"手机号",stid:"子任务编号"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+   65:按订单号查询订单
+  请求
+   路径:/ooidl
+   {phone:"手机号",oid:"订单号"}
+   返回
+   [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+   66：同意发放
+   请求
+   路径:/ogput
+   {stid:"子任务编号"}
+   67：拒绝发放
+   请求
+   路径:/ognoput
+   {stid:"子任务编号"}
+   68:修改返款金额并返款
+    请求
+    路径：/cmpm
+    {stid:"子任务编号",cMoney:"修改的返款金额"}
+
+买手端功能
+1:绑定多个淘宝账号
+  请求
+  路径/btbv
+  {phone:"买手手机号",tbVip:[]}
+  返回
+  {tbVip:[]}
+2:接任务
+  请求
+  路径:/bgts
+  {phone:"买手手机号",tid:"任务号"}
+  返回
+  {yaoqiu:"",sskey:"",cost:"",shopName:"",image:"",tid:"任号编号",tTime:"指定任务完成时间,时间为0时代表任务已过时"}
+
+3:核对商品链接
+  请求
+  路径:/cgls
+  {tid:"任务号",tbPwd:"淘口令"}
+  返回
+  {gl:"商品连接"}
+4：工单列表
+  请求
+  路径:/bssl
+  {phone:"买手手机号"}
+  返回
+  [{wcg:"微信群名",asks:"",image:[],phone:"买手手机号",reply:"",cTime:""}]
+5:新增工单
+  请求
+  路径:/bcss
+  {wcg:"微信群名",asks:"",image:[],phone:"手机号"}
+6:公告列表
+  请求
+  路径:/bnl
+  返回
+  [{nid:"公告ID",title:"标题", isr:"1:已读,0:未读",isz:"1:重要,0:不重要",cTime:""}]
+7:公告详细
+  请求
+  路径:/bni
+  {nid:"公告ID"}
+  返回
+  {nid:"公告ID",title:"标题", context:"内容",cTime:""}
+
+  8：我的信息
+    请求
+    路径：/binfo
+    ｛phone:"买手手机号"}
+    返回
+    {phone:"手机号",,pwd:"密码",weixin:"微信号",taobaovip:["淘宝账号"],sex:"性别",cTime:"注册时间",shouYi:"收益"}
+9:我的任务
+  请求
+  路径/moil
+  {phone:"买手手机号"}
+  返回
+  [{stId:"子任务编号",goodsImg:"商品主图",goodsName:"商品名",platform:"平台",shopName:"店铺名称",taobaoVip:"接单账号",oid:"订单号",yaJin:"返款押金",sMoney:"提交金额",yongJin:"服务费",state:"状态",cTime:"接单时间",sTime:"提交时间",tid:"主任务编号",goodsImg:"商品主图"}]
+
+
+
+
+
+
+   
+   
+
+   
+
+
+
+   
+
+
+
+
+
+
+
+
