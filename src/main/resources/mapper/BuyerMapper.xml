@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.BuyerMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+    <select id="getBuyer" resultType="com.orders.dao.maishou.Buyer">
+        SELECT * FROM buyer where phone=#{phone}
+    </select>
+
+    <insert id="registerBuyer" parameterType="com.orders.dao.maishou.Buyer"
+        useGeneratedKeys="true" keyProperty="id">
+        insert into buyer(phone,weiXin,taobaoVip,pwd,sex,superId,branchNo,cTime)
+        values (#{phone},#{weiXin},#{taobaoVip},#{pwd},#{sex},#{superId},#{branchNo,#{cTime})
+    </insert>
+
+    <update id="updatePwd" parameterType="com.orders.dao.maishou.Buyer">
+        update buyer set pwd=#{pwd} where id=#{id}
+    </update>
+</mapper>

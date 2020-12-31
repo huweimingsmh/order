@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.ShangJiaMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+    <select id="getShangJia" resultType="com.orders.dao.shangjia.ShangJia">
+        SELECT * FROM user where uid=#{phone}
+    </select>
+    <insert id="register" parameterType="com.orders.dao.shangjia.ShangJia"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into shangJia(phone,pwd,qq,selfMoney,yongjinMoney,zengzhiMoney,yaoqingMoney,SuperId,
+                    branchNo,sCheck,cTime)
+        values (#{phone},#{pwd},#{qq},#{selfMoney},#{yongjinMoney},${zengzhiMoney},
+        #{yaoqingMoney},#{superId},#{branchNo},#{sCheck},#{cTime})
+    </insert>
+    <update id="updatePwd" parameterType="com.orders.dao.shangjia.ShangJia">
+        update shangJia set pwd=#{pwd} where id=#{id}
+
+    </update>
+</mapper>
