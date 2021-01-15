@@ -1,0 +1,140 @@
+22:商家按手机号获得申诉列表
+   请求
+   路径:/sjgssls
+  
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   23:获得商家发起的申诉
+   请求
+   路径:/sjgsslbs
+   
+   ｛phone:"手机号"｝
+   返回
+  
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+ 24:获得商家收到的申诉
+   请求
+   路径:/sjgsslrs
+   
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   25:获得商家发起的申诉
+   请求
+   路径:/gsjssls
+ 
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题,",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   25:获得买手发起的申诉
+   请求
+   路径:/gbssls
+ 
+   ｛phone:"手机号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题,",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   26:按状态获得申诉列表
+   请求
+   路径:/gsssls
+  
+   ｛phone:"手机号",state:状态,1.申诉中,-1.申诉关闭,0.申诉取消｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   27:按子任务编号获得商家的申诉列表
+   请求
+   路径:/stidgssls
+  
+   {stId:"子任务编号"｝
+   返回
+ 
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   28:按商家手机号获得商家的申诉列表
+   请求
+   路径:/gsjpssls
+ 
+   {phone:"手机号"｝
+   返回
+  
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"申诉时间"}]
+
+   29:按买手手机号获得商家的申诉列表
+   请求
+   路径:/gbpssls
+   
+   {phone:"手机号"｝
+   返回
+  
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   30:按店铺名获得商家的申诉列表
+   请求
+   路径:/gsnssls
+   
+   {shopName:"店铺名"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+31:按接单账号获得商家的申诉列表
+   请求
+   路径:/getvipssls
+  
+   {vip:"接单账号(淘宝账号)"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   32:按任务订单号获得商家的申诉列表
+   请求
+   路径:/goidssls
+   
+   {oid:"任务订单号"｝
+   返回
+   
+   [{stId:"子任务编号",builder:"发起方",title:"申诉标题",state:"状态",isIn:"平台介入",ask:"申诉要求",images:[申诉要求附图],ssTime:"发起申诉时间"}]
+
+   33:发起申诉
+   请求
+   路径:/cnewss
+   
+   {stid:子任务编号, title:"申诉标题",problem:"申诉内容",ask:"解决方案",images:[申诉附图],builder:发起方,1:商家发起,2:买手发起'}
+
+   34:发起申诉时按旺旺号获得买手的联系方式
+   请求
+   路径:/sjssgpv
+ 
+   {ww:"买手旺旺"}
+   返回
+  
+   {phone:买手手机号}
+
+   35:发起申诉时按订单号获得买手的联系方式
+   请求
+   路径:/sjssgoid
+
+   {oid:"订单号"}
+   返回
+   phone:
+   {phone:买手手机号}
+
+   36:发起申诉时按子任务获得买手的联系方式
+   请求
+   路径:/sjssgstid
+  
+   {stid:"买手旺旺"}
+   返回
+  
+   {phone:买手手机号}

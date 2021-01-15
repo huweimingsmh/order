@@ -1,0 +1,61 @@
+
+  1:管理员发送消息
+  请求
+  路径:/sgmss
+  {title:"标题",context:"内容",sjphone:"商家手机号"}
+2:获得管理员消息
+   请求
+   路径:/sjgsm
+
+   {phone:买手手机号}
+   返回
+
+   [{title:"消息标题",mtime:"时间",context:"内容",id:"消息ID"}]
+
+3:获得任务消息
+   请求
+   路径:/sjgtm
+
+   {phone:商家手机号}
+   返回
+  
+   [{shopName:"店铺名",stId:"子任务编号",taskType:"任务类型",vip:"任务账号",image:"任务附图"}]
+
+ 4：联系买手
+   按订单编号联系买手
+   请求
+   路径:/sjgstidbyoid
+   {oid:"订单编号"}
+   返回
+   {stid:子任务编号}
+
+   5:联系买手
+   请求
+   路径:/sjcallbuyer
+ 
+   {stid:子任务编号}
+   返回
+   
+   [{take:"说话方"，context:聊天内容,date:时间}]
+   
+ 6：回复管理员
+   请求
+   路径:/gmbs
+  
+   {mid:"消息ID"}
+   返回
+  
+   {context:"聊天内容格式[{说话方:"",context:{内容:"",时间：""}},]",mid:"消息ID"}
+
+ 7：回复管理员消息发送
+    请求
+   路径:/gmbsc
+  
+   {mid:"消息ID",context:聊天内容格式{说话方:"",context:内容}}
+
+8：任务消息发送
+请求
+   路径:/tmsmsg
+  
+   {stid:"子任务编号",context:"聊天内容格式,sendEr:"1:代表商家发送消息,2:代表买手发送消息"}
+

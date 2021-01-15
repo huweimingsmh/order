@@ -1,0 +1,40 @@
+16：获得店铺列表
+   请求
+   路径:/gshop
+   {phone:"手机号"}
+   返回
+  
+   [{id:"店铺数据库ID",platform:"平台",name:"店铺名",wangWang:"旺旺",state:"状态",sTime:"创建时间",sDesc:"不通过原因"}]
+
+17:按状态查店铺列表
+   请求
+   路径：/gsshop
+  
+   {phone:"手机号",state:"状态"}
+   返回
+    [{id:"店铺数据库ID",platform:"平台",name:"店铺名",wangWang:"旺旺",state:"状态",sTime:"创建时间",sDesc:"不通过原因"}]
+
+18：建店铺
+   请求
+   路径:/addshop
+   
+   {platform:"平台",name:"店铺名",image:"店铺后台图",where:"发货地",address:"详细地址",sPhone:"发货电话,",phone:"商家手机号"}
+19：删除店铺
+    请求
+    路径:/delshop
+   
+    {id:"店铺数据库ID"}
+20：编辑店铺
+    请求
+    路径:/editshop
+    
+   {platform:"平台",name:"店铺名",image:"店铺后台图",where:"发货地",address:"详细地址",sPhone:"发货电话",phone:"商家手机号"}
+
+21:按名查店铺
+   请求
+   路径:/gnshop
+  
+   ｛phone:"手机号",name:"店铺名"｝
+   返回
+   
+    [{id:"店铺数据库ID",platform:"平台",name:"店铺名",wangWang:"旺旺",state:"状态",sTime:"创建时间",sDesc:"不通过原因"}]

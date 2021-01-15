@@ -1,0 +1,58 @@
+1:商家登录:
+  请求:
+  路径：/sjlogin
+  phone:手机号,pwd:密码
+  {phone:"手机号",pwd:密码}
+  返回:
+  phone:成功登录后的手机号,前端全局保存，整个项目需要手机号作参数,url:跳转首页的URL
+  {phone:"手机号,",url:"跳转首页的URL"}
+
+  2:买手登录:
+  请求:
+  路径：/blogin
+  phone:手机号,pwd:密码
+  {phone:"手机号",pwd:密码}
+  返回:
+  phone:成功登录后的手机号,前端全局保存，整个项目需要手机号作参数,url:跳转首页的URL
+  {phone:"手机号,",url:"跳转首页的URL"}
+
+
+3:商家忘记密码
+  请求:
+  路径:/sjfpwd
+ 
+  {phone:"手机号",newPwd:"密码",reNewPwd:"确认密码",checkCode="手机验证码"}
+  返回:
+    {url:跳转到登录页}
+
+4:买手忘记密码
+  请求:
+  路径:/bfpwd
+ 
+  {phone:"手机号",newPwd:"密码",reNewPwd:"确认密码",checkCode="手机验证码"}
+  返回:
+    按6协议
+
+5:商家注册
+  请求:
+  路径:/sjr
+  {phone:"手机号",checkCode:"手机验证码",pwd:"密码",rePwd:"确认密码",qq:"qq",yoCode:"邀请码"}
+  返回:
+  {phone:"成功注册后的手机号",url:"跳转首页的URL"}
+
+  5:买手注册
+  请求:
+  
+  买手:
+  路径:/br
+  {phone:"手机号",checkCode:"手机验证码",pwd:"密码",weixin:"微信号",taobaovip:"淘宝账号",sex:"性别,1:男,0:女"}
+  返回:
+  {phone:"成功注册后的手机号",url:"跳转首页的URL"}
+4:手机号验证码
+  请求
+  路径：/pl
+
+  {phone:"手机号"}
+5:错误提示
+  业务出错返回的
+  {error:"错误描述"}

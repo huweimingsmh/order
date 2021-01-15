@@ -1,0 +1,60 @@
+商家账户充值
+  请求：
+   路径:/ainfo
+  ｛phone:"手机号"}
+  返回:
+  
+   [{category:"充值类别",info:"详情",cMoney:"变动金额",rMoney:"余额",tTime:"交易时间"}]
+
+9：按时间查商家账户充值
+  请求:
+  路径:/ainfobytime
+  
+  {phone:"手机号",startTime:"开始时间",endTime:"结束时间"}
+  返回:
+  
+   [{category:"充值类别",info:"详情",cMoney:"变动金额",rMoney:"余额",tTime:"交易时间"}]
+
+10:查商家转账
+   请求:
+   路径:/tinfo
+   {phone:"手机号"}
+   返回:
+   
+    [{wMoney:"转账金额",bankName:"银行名",bankNo:"银行卡号",bankPerson:"持卡人名",state:状态,aDes:"描述",sTime:"提交时间",cTime:"审核时间"}]
+
+ 11:提交转账信息
+   请求
+   路径:/tadd
+   
+    [{tMoney:"转账金额",bankName:"银行名",bankNo:"银行卡号",bankPerson:"持卡人名",phone:"商家手机号"}]
+
+ 12:审核转账信息
+   请求
+   路径:/tverify
+  
+   {id:"转账信息数据库ID",state:"设置状态",desc:"失败原因描述或其他"}
+ 13:管理员查待审核转账信息
+    请求
+    路径:/tinfo
+    ｛phone:"商家手机号"}
+    返回
+   [{id:"转账信息数据库ID",tMoney:"转账金额",bankName:"银行名",bankNo:"银行卡号",bankPerson:"持卡人名",submitTime:"提交时间"}]
+
+14:商家充值佣金
+   请求
+   路径:/ryj
+  
+   {phone:"手机号",yongJin:"需充值佣金的金额"}
+   返回
+   
+   {selfMoney:"充值后本金余额",yongJiMoney:充值后佣金余额}
+
+15:商家收益转本金
+   请求
+   路径：/ryq
+   
+   {phone:"手机号"}
+   返回
+  
+   {selfMoney:"充值后本金余",yaoqingMoney:"充值后收益余额"}

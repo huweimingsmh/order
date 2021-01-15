@@ -1,0 +1,35 @@
+商家首页
+  请求
+  路径:/sjhome
+  {phone:"手机号"}
+  返回：
+  {refund:"待返款订单数",reward:"待奖励订单数"，msgCount:"待处理消息",shenSuCount:"待处理申诉数",cCode:"自已的邀请码",noticList:[{isP:"标识是否重要,1:重要,0：不重要",title:"标题",cTime:"时间",isR:"是否已读,1:已读,0：未读"}],sMoney:"本金余额",yjMoney:"佣金余额",ytMoney:"邀请收益余额",isC:"是否免审商家,1:是,0:否"}
+
+
+
+买手首页
+  请求
+  路径:/bhome
+  {phone:"手机号"}
+  返回：
+  {refund:"待返款订单数",reward:"待奖励订单数"，msgCount:"待处理消息",shenSuCount:"待处理申诉数",cCode:"自已的邀请码",noticList:[{isP:"标识是否重要,1:重要,0：不重要",title:"标题",cTime:"时间",isR:"是否已读,1:已读,0：未读"}],sMoney:"本金余额",yjMoney:"佣金余额",ytMoney:"邀请收益余额",isC:"是否免审商家,1:是,0:否"}
+
+
+
+  , sjFunUrl:{sjHomeUrl:"商家首页",myTaskUrl:"我的任务",myShopUrl:"我的店铺",accountUrl:"账户充值",msgUrl:消息中心,shenSuUrl:申诉中心,reFundUrl:"处理待返款订单",rewardUrl:"待奖励订单数",msgUrl:待处理消息,shenSuUrl:待处理申诉数,pushTaskUrl:发布任务,rechargeUrl:"充值本金",myAccountUrl:"本金余额"}
+
+
+  首页的功能URL：
+ "商家首页"：/sjhome
+ 我的任务"：/gsjtask
+ 我的店铺"：/gshop
+ "账户充值":/ainfo
+ 消息中心: /sjgtm
+ 申诉中心:/sjgssls
+ "处理待返款订单":/gorderbyrefund
+ "待奖励订单数":/gorderbyreward
+ 待处理消息:/sjgtm
+ 待处理申诉数:/sjgssls
+ 发布任务:/pushtask
+ "充值本金":/balance-recharge
+ "本金余额":/ainfo
