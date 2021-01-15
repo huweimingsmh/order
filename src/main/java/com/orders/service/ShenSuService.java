@@ -1,5 +1,7 @@
 package com.orders.service;
 
+import com.orders.dao.ShenSu;
+import com.orders.vo.ShenSuNewVo;
 import com.orders.vo.ShenSuRVo;
 
 import java.util.List;
@@ -55,7 +57,7 @@ public interface ShenSuService {
      * @param stId
      * @return
      */
-    public List<ShenSuRVo> getShenSuBySt(String stId);
+    public List<ShenSuRVo> getShenSuByStid(String stId);
 
     /**
      *按商家手机号获得
@@ -95,7 +97,9 @@ public interface ShenSuService {
     /**
      *发起申诉
      */
-    public void buildShenSu();
+    public void buildShenSu(ShenSuNewVo vo);
+
+    public int getShenSuCount(String phone);
 
 
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.BuyerMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+    <select id="getShop" resultType="com.orders.dao.shops.Shop">
+        SELECT id,phone,name,wangWang,state,sDesc,sWher,address,sPhone,image,platform,sTime FROM shop where phone=#{0}
+    </select>
+
+    <select id="getShopByState" resultType="com.orders.dao.shops.Shop">
+        SELECT id,phone,name,wangWang,state,sDesc,sWher,address,sPhone,image,platform,sTime FROM shop where phone=#{0} and state=#{1}
+    </select>
+
+    <select id="getShpByName" resultType="com.orders.dao.shops.Shop">
+        SELECT id,phone,name,wangWang,state,sDesc,sWher,address,sPhone,image,platform,sTime FROM shop where name=#{0}
+    </select>
+    <update id="editShop" parameterType="com.orders.dao.maishou.Buyer">
+        update shop 
+        <set >
+        <if test="name != null">
+            name = #{name},
+        </if>
+        <if test="wangWang != null">
+            wangWang = #{wangWang},
+        </if>
+        <if test="state != 0">
+            state = #{state},
+        </if>
+         <if test="sDesc != null">
+            sDesc = #{sDesc},
+        </if>
+         <if test="sWhere != null">
+            sWhere = #{sWhere},
+        </if>
+         <if test="address != null">
+            address = #{address},
+        </if>
+         <if test="sPhone != null">
+            sPhone = #{sPhone},
+        </if>
+       </set>
+       where id = #{id}
+    </update>
+
+    <delete id="delShop" parameterType="long" flushCache="true" statementType="PREPARED" timeout="20">
+       delete from shop where id=#{0}
+    </delete> 
+   
+    <insert id="addShop" parameterType="com.orders.dao.shops.Shop"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into shop(phone,name,wangWang,state,sDesc,sWhere,address,sPhone,platform,image,sTime)
+        values (#{phone},#{name},#{wangWang},#{state},#{sDesc},#{sWhere},#{address},#{sPhone},#{platform},#{image},#{sTime})
+    </insert>
+
+    
+</mapper>

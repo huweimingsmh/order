@@ -3,17 +3,30 @@
 <mapper namespace="com.orders.mapper.ShangJiaMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
     <select id="getShangJia" resultType="com.orders.dao.shangjia.ShangJia">
-        SELECT * FROM user where uid=#{phone}
+        SELECT id,phone,pwd,qq,selfMoney,yongjinMoney,zengzhiMoney,yaoqingMoney,superCode,branchNo,sCheck,cTime FROM shangJia where phone=#{0}
     </select>
     <insert id="register" parameterType="com.orders.dao.shangjia.ShangJia"
             useGeneratedKeys="true" keyProperty="id">
-        insert into shangJia(phone,pwd,qq,selfMoney,yongjinMoney,zengzhiMoney,yaoqingMoney,SuperId,
-                    branchNo,sCheck,cTime)
+        insert into shangJia(phone,pwd,qq,selfMoney,yongjinMoney,zengzhiMoney,yaoqingMoney,superCode,branchNo,sCheck,cTime)
         values (#{phone},#{pwd},#{qq},#{selfMoney},#{yongjinMoney},${zengzhiMoney},
-        #{yaoqingMoney},#{superId},#{branchNo},#{sCheck},#{cTime})
+        #{yaoqingMoney},#{superCode},#{branchNo},#{sCheck},#{cTime})
     </insert>
     <update id="updatePwd" parameterType="com.orders.dao.shangjia.ShangJia">
         update shangJia set pwd=#{pwd} where id=#{id}
+
+    </update>
+
+     <update id="updateYongJinMoney" >
+        update shangJia set yongjinMoney=#{1} where phone=#{0}
+
+    </update>
+     <update id="updateSelfMoney" >
+        update shangJia set selfMoney=#{1} where phone=#{0}
+
+    </update>
+     
+     <update id="updateYaoQingMoney" >
+        update shangJia set yaoqingMoney=#{1} where phone=#{0}
 
     </update>
 </mapper>

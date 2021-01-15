@@ -57,6 +57,26 @@ public class ShangJiaServiceImp implements ShangJiaService {
         return StateCode.PHONE_ERROR;
     }
 
+    @Override
+    public int getMsgCount(String phone, HttpSession session) {
+        ShangJia sj=(ShangJia)session.getAttribute(phone);
+        if(null!=sj){
+            return sj.getMsgCount();
+        }else{
+            return shangJiaMapper.getMsgCount(phone);
+        }
+
+    }
+
+    @Override
+    public int getShensuCount(String phone, HttpSession session) {
+       ShangJia sj=(ShangJia)session.getAttribute(phone);
+       if(null!=sj){
+           return sj.getShensuCount();
+       }else{
+         return   shangJiaMapper.getShensuCount(phone);
+       }
+    }
 
 
     @Override

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Service
+@Service(value="accountService")
 public class AccountServiceImp implements AccountService {
     private static Logger log= LoggerFactory.getLogger(AccountServiceImp.class);
 
@@ -104,10 +104,12 @@ public class AccountServiceImp implements AccountService {
         water.setBankName(vo.getBankName());
         water.setBankNo(vo.getBankNo());
         water.setBankPerson(vo.getBankPerson());
-        water.setConfirmTime(new Date());
-        water.setSubmitTime(new Date());
+        water.setsTime(new Date());
+       water.setcTime(new Date());
+
         water.setState(0);
-        water.settMoney(vo.gettMoney());
+        water.setwMoney(vo.gettMoney());
+
         try {
             transferMapper.addTransferWater(water);
         }catch(SQLException sql){
@@ -170,9 +172,9 @@ public class AccountServiceImp implements AccountService {
             transferMapper.updateTransferState(tc);
             ShangJia sj = shangJiaMapper.getShangJia(water.getPhone());
             if (null != sj) {
-                shangJiaAccountHelp(sj.getPhone(), AccountCategory.S_RECHARGE, water.gettMoney());
+                shangJiaAccountHelp(sj.getPhone(), AccountCategory.S_RECHARGE, water.getwMoney());
             }
-            AccountWater aw = ServiceTools.createAccountWater(water.getPhone(), water.gettMoney(), sj.getSelfMoney(), AccountCategory.S_RECHARGE);
+            AccountWater aw = ServiceTools.createAccountWater(water.getPhone(), water.getwMoney(), sj.getSelfMoney(), AccountCategory.S_RECHARGE);
             accountMapper.addAccountWater(aw);
         }
         }catch(SQLException sql){

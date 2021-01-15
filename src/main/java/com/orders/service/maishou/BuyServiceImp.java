@@ -38,13 +38,13 @@ public class BuyServiceImp implements BuyService{
     }
 
     @Override
-    public int register(RegisterVo vo, HttpSession session) {
+    public int register(BuyRegisterVo vo, HttpSession session) {
         if(null!=vo){
             String code=(String)session.getAttribute(vo.getPhone());
             if(ServiceTools.checkPhoneValidate(vo.getCheckCode(),code)!=StateCode.OK){
                 return StateCode.PHONE_VALIDATE_ERROR;
             }
-            Buyer buyer=ServiceTools.createBuyer((BuyRegisterVo) vo);
+            Buyer buyer=ServiceTools.createBuyer(vo);
             try {
                 buyerMapper.registerBuyer(buyer);
                 session.setAttribute(vo.getPhone(),buyer);
@@ -57,6 +57,26 @@ public class BuyServiceImp implements BuyService{
         return StateCode.PHONE_ERROR;
     }
 
+    @Override
+    public int getMsgCount(String phone, HttpSession session) {
+        Buyer buy=(Buyer)session.getAttribute(phone);
+        if(null!=buy){
+            return buy.getMsgCount();
+        }else{
+            return buyerMapper.getMsgCount(phone);
+        }
+
+    }
+
+    @Override
+    public int getShensuCount(String phone, HttpSession session) {
+        Buyer buy=(Buyer)session.getAttribute(phone);
+        if(null!=buy){
+            return buy.getShensuCount();
+        }else{
+            return buyerMapper.getShensuCount(phone);
+        }
+    }
 
 
     @Override

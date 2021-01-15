@@ -7,7 +7,7 @@ public class ShenSuRVo {
     private String state;
     private String isIn;
     private String ask;
-    private String images;
+    private String[] images;
     private String ssTime;
 
     public String getStId() {
@@ -58,11 +58,11 @@ public class ShenSuRVo {
         this.ask = ask;
     }
 
-    public String getImages() {
+    public String[] getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 

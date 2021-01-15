@@ -17,7 +17,8 @@ public class ShenSu {
     private String bPhone;
     private String taobaoVip;
     private String shopName;
-    private Date ssTime;
+    private String oId;
+    private String ssTime;
 
     public long getId() {
         return id;
@@ -131,11 +132,19 @@ public class ShenSu {
         this.shopName = shopName;
     }
 
-    public Date getSsTime() {
+    public String getSsTime() {
         return ssTime;
     }
 
-    public void setSsTime(Date ssTime) {
+    public void setSsTime(String ssTime) {
         this.ssTime = ssTime;
+    }
+
+    public String getoId() {
+        return oId;
+    }
+
+    public void setoId(String oId) {
+        this.oId = oId;
     }
 }

@@ -21,7 +21,11 @@ public interface BuyService extends LoginService {
      * 买手注册
      * @param vo
      */
-    public int register(RegisterVo vo, HttpSession session);
+    public int register(BuyRegisterVo vo, HttpSession session);
+
+    public int getMsgCount(String phone, HttpSession session);
+
+    public int getShensuCount(String phone, HttpSession session);
 
 
 

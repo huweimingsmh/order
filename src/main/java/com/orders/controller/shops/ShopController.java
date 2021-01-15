@@ -10,52 +10,64 @@ import com.orders.vo.ShopVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
+@Controller
 public class ShopController {
     private static Logger log = LoggerFactory.getLogger(ShopController.class);
     @Autowired
     private ShopService shopService;
 
-    @RequestMapping(value="/gs",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/gshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<Shop> getShop(String phone) {
+    public List<Shop> getShop(@RequestBody String phone) {
+
         return shopService.getShop(phone);
     }
 
-    @RequestMapping(value="/gss",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/gsshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<Shop> getShopByState(String phone, int state) {
+    public List<Shop> getShopByState(@RequestBody Map<String,Object> param) {
+        String phone=(String)param.get("phone");
+        int state=Integer.valueOf((String)param.get("state"));
         return shopService.getShopByState(phone, state);
     }
 
-    @RequestMapping(value="/sadd",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/addshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public void addShop(ShopVo vo) {
+    public void addShop(@RequestBody ShopVo vo) {
         if (null != vo) {
             shopService.addShop(vo);
         }
     }
 
-    @RequestMapping(value="/sdel",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/delshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public void delShop(long id) {
-        shopService.delShop(id);
+    public void delShop(@RequestBody String id) {
+
+        shopService.delShop(Long.valueOf(id));
 
     }
 
-    @RequestMapping(value="/sedit",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/editshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public void editShop(ShopVo vo) {
+    public void editShop(@RequestBody ShopVo vo) {
+
         shopService.editShop(vo);
     }
 
-    @RequestMapping(value="/sgn",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/gnshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getShopByName(String phone, String name) {
+    public String getShopByName(@RequestBody Map<String,Object> param) {
+        String phone=(String)param.get("phone");
+        String name=(String)param.get("name");
         Shop shop= shopService.getShopByName(phone, name);
         if(null!=shop){
             try {

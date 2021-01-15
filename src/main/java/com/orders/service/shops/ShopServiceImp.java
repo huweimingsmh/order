@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service(value="shopService")
 public class ShopServiceImp implements ShopService {
     private static Logger log= LoggerFactory.getLogger(ShopServiceImp.class);
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.BuyerMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+   
+   <select id="getSystemMessageBySJ" resultType="com.orders.dao.SysMessage">
+        SELECT id,title,cTime FROM sysmessage where phone=#{0}
+    </select>
+
+     <select id="getSystemMessageByBuyer" resultType="com.orders.dao.SysMessage">
+        SELECT id,title,cTime FROM sysmessage where phone=#{0}
+     </select>
+      
+       <select id="getTaskMessageBySJ" resultType="com.orders.dao.Message">
+        SELECT id,stId,taobaoVip,cTime FROM message where (senderPhone=#{0} or receiverPhone=#{0}) 
+       </select>
+
+     <select id="getTaskMessageByBuyer" resultType="com.orders.dao.Message">
+        SELECT id,stId,taobaoVip,cTime FROM message where senderPhone=#{0} and receiverPhone=#{0}
+    </select>
+
+    <select id="getTaskMessageBySubTask" resultType="com.orders.dao.Message">
+        SELECT id,stId,taobaoVip,cTime FROM message where stId=#{0}
+    </select>
+
+    <select id="getTaskMessageContext" resultType="String">
+        SELECT context FROM message where stId=#{0}
+    </select>
+
+
+
+    <insert id="createMessage" parameterType="com.orders.dao.Message"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into buyer(senderPhone,receiverPhone,context,stId,taobaoVip,builder,cTime)
+        values (#{senderPhone},#{receiverPhone},#{context},#{stId},#{taobaoVip},#{builder},#{cTime})
+    </insert>
+
+    <update id="updateMessage" parameterType="com.orders.dao.Message">
+        update message set context=#{context} where id=#{id}
+    </update>
+
+
+</mapper>

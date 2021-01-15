@@ -3,7 +3,7 @@
 <mapper namespace="com.orders.mapper.BuyerMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
     <select id="getBuyer" resultType="com.orders.dao.maishou.Buyer">
-        SELECT * FROM buyer where phone=#{phone}
+        SELECT id,phone,weiXin,taobaoVip,pwd,sex,superCode,branchNo,cTime FROM buyer where phone=#{0}
     </select>
 
     <insert id="registerBuyer" parameterType="com.orders.dao.maishou.Buyer"

@@ -43,7 +43,7 @@ public class ServiceTools {
         buyer.setPhone(vo.getPhone());
         buyer.setcTime(new Date());
         buyer.setSex(vo.getSex());
-        buyer.setSuperId(1);
+       // buyer.setSuperId(1);
         buyer.setTaobaoVip(vo.getTaobaovip());
         buyer.setWeiXin(vo.getWeixin());
         return buyer;
@@ -58,7 +58,7 @@ public class ServiceTools {
         shangJia.setYaoqingMoney(0);
         shangJia.setZengzhiMoney(0);
         shangJia.setYongjinMoney(0);
-        shangJia.setSuperId(1);
+       // shangJia.setSuperCode();
         return shangJia;
     }
 
@@ -80,12 +80,13 @@ public class ServiceTools {
         shop.setName(vo.getName());
         shop.setPhone(vo.getPhone());
         shop.setPlatform(vo.getPlatform());
-        shop.setSdesc("");
+       // shop.setSdesc("");
         shop.setsPhone(vo.getsPhone());
         shop.setState(0);
         shop.setsTime(new Date());
         shop.setWangWang(wangWang);
-        shop.setWhere(vo.getWhere());
+      //  shop.setWhere(vo.getWhere());
+        shop.setsWhere(vo.getWhere());
         return shop;
 
     }

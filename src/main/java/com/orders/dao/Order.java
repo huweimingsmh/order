@@ -8,11 +8,14 @@ public class Order {
     private String taobaoVip;
     private String oId;
     private String tId;
-    private String phone;
+    private String sjPhone;
+    private String bPhone;
+    private String image;
     private int yaJin;
     private int sMoney;
     private int yongJin;
     private int state;
+    private int tType;
     private Date cTime;
     private Date sTime;
     private String goodsName;
@@ -59,12 +62,20 @@ public class Order {
         this.tId = tId;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getSjPhone() {
+        return sjPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setSjPhone(String sjPhone) {
+        this.sjPhone = sjPhone;
+    }
+
+    public String getbPhone() {
+        return bPhone;
+    }
+
+    public void setbPhone(String bPhone) {
+        this.bPhone = bPhone;
     }
 
     public int getYaJin() {
@@ -101,6 +112,22 @@ public class Order {
 
     public Date getcTime() {
         return cTime;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public int gettType() {
+        return tType;
+    }
+
+    public void settType(int tType) {
+        this.tType = tType;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setcTime(Date cTime) {

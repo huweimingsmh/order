@@ -22,5 +22,10 @@ public interface ShangJiaService extends LoginService  {
      */
     public int register(RegisterVo vo, HttpSession session);
 
+    public int getMsgCount(String phone, HttpSession session);
+
+    public int getShensuCount(String phone, HttpSession session);
+
+
 
 }

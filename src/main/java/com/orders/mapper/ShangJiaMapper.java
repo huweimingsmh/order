@@ -14,9 +14,13 @@ public interface ShangJiaMapper {
 
     public int updatePwd(ShangJia shangJia) throws SQLException;
 
-    public int updateSelfMoney(long id,int money) throws SQLException;
+    //public int updateSelfMoney(long id,int money) throws SQLException;
 
     public int updateYongJinMoney(String phone,int money) throws SQLException;
     public int updateSelfMoney(String phone,int money) throws SQLException;
     public int updateYaoQingMoney(String phone,int money) throws SQLException;
+
+    public int getMsgCount(String phone);
+
+    public int getShensuCount(String phone);
 }

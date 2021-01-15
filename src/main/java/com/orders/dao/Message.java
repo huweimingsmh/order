@@ -6,12 +6,14 @@ public class Message {
     private long id;
     private String senderPhone;
     private String receiverPhone;
-    private int category;
+
     private String context;
     private String stId;
     private String taobaoVip;
-    private String wangWang;
-    private Date cTime;
+    //private String wangWang;
+    private int builder;
+    private String cTime;
+    //private int isRead;
 
     public long getId() {
         return id;
@@ -37,13 +39,7 @@ public class Message {
         this.receiverPhone = receiverPhone;
     }
 
-    public int getCategory() {
-        return category;
-    }
 
-    public void setCategory(int category) {
-        this.category = category;
-    }
 
     public String getContext() {
         return context;
@@ -69,19 +65,36 @@ public class Message {
         this.taobaoVip = taobaoVip;
     }
 
-    public String getWangWang() {
-        return wangWang;
+//    public String getWangWang() {
+//        return wangWang;
+//    }
+//
+//    public void setWangWang(String wangWang) {
+//        this.wangWang = wangWang;
+//    }
+
+
+//    public int getIsRead() {
+//        return isRead;
+//    }
+//
+//    public void setIsRead(int isRead) {
+//        this.isRead = isRead;
+//    }
+
+    public int getBuilder() {
+        return builder;
     }
 
-    public void setWangWang(String wangWang) {
-        this.wangWang = wangWang;
+    public void setBuilder(int builder) {
+        this.builder = builder;
     }
 
-    public Date getcTime() {
+    public String getcTime() {
         return cTime;
     }
 
-    public void setcTime(Date cTime) {
+    public void setcTime(String cTime) {
         this.cTime = cTime;
     }
 }

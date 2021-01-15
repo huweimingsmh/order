@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.BuyerMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+
+
+     <select id="getTransferWater" resultType="com.orders.dao.TransferWater">
+        SELECT id,phone,wMoney,bankName,bankNo,bankPerson,state,aDes,sTime,cTime FROM transfer_water where phone=#{0}
+    </select>
+
+
+     <select id="getTransferWater" resultType="com.orders.dao.TransferWater">
+        SELECT id,phone,wMoney,bankName,bankNo,bankPerson,state,aDes,sTime,cTime FROM transfer_water where id=#{0}
+    </select>
+
+    
+
+    <insert id="addTransferWater" parameterType="com.orders.dao.TransferWater"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into transfer_water(phone,wMoney,bankName,bankNo,bankPerson,state,aDes,sTime,cTime)
+        values (#{phone},#{wMoney},#{bankName},#{bankNo},#{bankPerson},#{state},#{aDes},#{sTime},#{cTime})
+    </insert>
+
+    <update id="updateTransferState" parameterType="com.orders.vo.TransferChangeVo">
+        update transfer_water  <set>
+        <if test="state != 0">
+            state = #{state},
+        </if>
+        <if test="desc != null">
+            aDes = #{desc},
+        </if>
+        <if test="confirmTime !=null">
+            cTime = #{confirmTime}
+        </if>
+        where id=#{id}
+    </update>
+</mapper>

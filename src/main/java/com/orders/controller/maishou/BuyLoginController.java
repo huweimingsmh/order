@@ -9,6 +9,7 @@ import com.orders.vo.ForgetPwdVo;
 import com.orders.vo.LoginVo;
 import com.orders.vo.RegisterVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,15 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
-public class BuyLoginController implements LoginController {
+//@RestController
+@Controller
+public class BuyLoginController  {//implements LoginController
     @Autowired
     private BuyService buyService;
 
 
-    @RequestMapping(value="/bl",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/blogin",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    @Override
+
     public String login(@RequestBody LoginVo vo, HttpSession session) {
 
         if(null!=vo){
@@ -44,9 +46,9 @@ public class BuyLoginController implements LoginController {
         return   ToolsUtils.forwordPage("url","error.html");
     }
 
-    @RequestMapping(value="/rl",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/bfpwd",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    @Override
+
     public String resetPwd(@RequestBody ForgetPwdVo vo,HttpSession session) {
         if(null!=vo){
             int result=buyService.forgetPwd(vo,session);
@@ -62,10 +64,10 @@ public class BuyLoginController implements LoginController {
         return   ToolsUtils.forwordPage("url","error.html");
     }
 
-    @RequestMapping(value="/tl",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/br",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    @Override
-    public String registed(@RequestBody RegisterVo vo, HttpSession session) {
+
+    public String registed(@RequestBody BuyRegisterVo vo, HttpSession session) {
         if(null!=vo){
             int result=buyService.register(vo,session);
             if(result==StateCode.OK){

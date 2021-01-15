@@ -12,6 +12,24 @@ public class Buyer {
     private String superCode;
     private String branchNo;
     private Date cTime;
+    private int msgCount;
+    private int shensuCount;
+
+    public int getMsgCount() {
+        return msgCount;
+    }
+
+    public void setMsgCount(int msgCount) {
+        this.msgCount = msgCount;
+    }
+
+    public int getShensuCount() {
+        return shensuCount;
+    }
+
+    public void setShensuCount(int shensuCount) {
+        this.shensuCount = shensuCount;
+    }
 
     public long getId() {
         return id;

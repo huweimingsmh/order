@@ -13,8 +13,26 @@ public class ShangJia {
     private int yaoqingMoney;
     private String superCode;
     private String branchNo;
-    private byte sCheck;
+    private int sCheck;
     private Date cTime;
+    private int msgCount;
+    private int shensuCount;
+
+    public int getMsgCount() {
+        return msgCount;
+    }
+
+    public void setMsgCount(int msgCount) {
+        this.msgCount = msgCount;
+    }
+
+    public int getShensuCount() {
+        return shensuCount;
+    }
+
+    public void setShensuCount(int shensuCount) {
+        this.shensuCount = shensuCount;
+    }
 
     public long getId() {
         return id;
@@ -96,11 +114,11 @@ public class ShangJia {
         this.branchNo = branchNo;
     }
 
-    public byte getsCheck() {
+    public int getsCheck() {
         return sCheck;
     }
 
-    public void setsCheck(byte sCheck) {
+    public void setsCheck(int sCheck) {
         this.sCheck = sCheck;
     }
 

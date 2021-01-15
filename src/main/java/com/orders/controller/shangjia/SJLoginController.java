@@ -8,19 +8,21 @@ import com.orders.vo.ForgetPwdVo;
 import com.orders.vo.LoginVo;
 import com.orders.vo.RegisterVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
+@Controller
 public class SJLoginController implements LoginController {
 
     @Autowired
     private ShangJiaService shangJiaService;
-    @RequestMapping(value="/tl",  produces = "application/json;charset=UTF-8")
+
+
+
+    @RequestMapping(value="/sjlogin",  produces = "application/json;charset=UTF-8")
+    //@GetMapping("/sjlogin")
     @ResponseBody
     @Override
     public String login(@RequestBody LoginVo vo, HttpSession session) {
@@ -28,6 +30,8 @@ public class SJLoginController implements LoginController {
             if(ToolsUtils.isOnline(vo.getPhone(),session)) {
                 return   ToolsUtils.forwordPage("url","home.html");
             }
+
+
             int result=shangJiaService.login(vo,session);
             if(result== StateCode.OK){
                 return   ToolsUtils.forwordPage("url","home.html");
@@ -41,7 +45,7 @@ public class SJLoginController implements LoginController {
         return   ToolsUtils.forwordPage("url","error.html");
     }
 
-    @RequestMapping(value="/tl",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/sjfpwd",  produces = "application/json;charset=UTF-8")
     @ResponseBody
     @Override
     public String resetPwd(@RequestBody ForgetPwdVo vo,HttpSession session)
@@ -60,6 +64,8 @@ public class SJLoginController implements LoginController {
         return   ToolsUtils.forwordPage("url","error.html");
     }
 
+    @RequestMapping(value="/sjr",  produces = "application/json;charset=UTF-8")
+    @ResponseBody
     @Override
     public String registed(@RequestBody RegisterVo vo, HttpSession session) {
 

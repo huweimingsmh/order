@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.BuyerMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+
+    <select id="getShenSu" resultType="com.orders.dao.ShenSu">
+        SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where ssPhone=#{0} or aPhone=#{0}
+    </select>
+
+    <select id="getShenSuByBuilder" resultType="com.orders.dao.ShenSu">
+        SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where ssPhone=#{0}  
+    </select>
+
+
+
+    <select id="getShenSuByAccpter" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where aPhone=#{0}  
+    </select>
+
+      <select id="getShenSuBySJ" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where ssPhone=#{0}  
+    </select>
+
+      <select id="getShenSuByB" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where ssPhone=#{0}  
+    </select>
+
+    <select id="getShenSuByState" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where (ssPhone=#{0} or aPhone=#{0}) and state=#{1}
+    </select>
+
+     <select id="getShenSuBySTID" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where stId=#{0}  
+    </select>
+
+     <select id="getShenSuBySJPhone" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where sjPhone=#{0}  
+    </select>
+
+    <select id="getShenSuByShopName" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where shopName=#{0}  
+    </select>
+
+    <select id="getShenSuByBPhone" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where bphone=#{0}  
+    </select>
+
+    <select id="getShenSuByVip" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where taobaoVip=#{0}  
+    </select>
+
+    <select id="getShenSuByOid" resultType="com.orders.dao.ShenSu">
+         SELECT id,stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime FROM shensu where oId=#{0}  
+    </select>
+
+    <insert id="buildShenSu" parameterType="com.orders.dao.ShenSu"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into shensu(stId,ssPhone,aPhone,builder,title,state,isIn,ask,image,sjPhone,bPhone,taobaoVip,shopName,ssTime)
+        values (#{phone},#{weiXin},#{taobaoVip},#{pwd},#{sex},#{superId},#{branchNo,#{cTime})
+    </insert>
+
+    
+</mapper>
