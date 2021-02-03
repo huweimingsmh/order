@@ -231,4 +231,14 @@ public class ShenSuServiceImpl implements ShenSuService {
     public int getShenSuCount(String phone) {
         return 0;
     }
+
+    @Override
+    public ShenSu getShenSuBystid(String stid) {
+        try {
+            return shensuMapper.getShenSuBySt(stid).get(0);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
+    }
 }

@@ -9,9 +9,9 @@ public class HomeVo {
     private int shenSuCount;
     private String cCode;
     private List<NoticVo> noticList;
-    private int sMoney;
-    private int yjMoney;
-    private int ytMoney;
+    private double sMoney;
+    private double yjMoney;
+    private double ytMoney;
     private int isC;
     private String phone;
     private long id;
@@ -65,27 +65,27 @@ public class HomeVo {
         this.noticList = noticList;
     }
 
-    public int getsMoney() {
+    public double getsMoney() {
         return sMoney;
     }
 
-    public void setsMoney(int sMoney) {
+    public void setsMoney(double sMoney) {
         this.sMoney = sMoney;
     }
 
-    public int getYjMoney() {
+    public double getYjMoney() {
         return yjMoney;
     }
 
-    public void setYjMoney(int yjMoney) {
+    public void setYjMoney(double yjMoney) {
         this.yjMoney = yjMoney;
     }
 
-    public int getYtMoney() {
+    public double getYtMoney() {
         return ytMoney;
     }
 
-    public void setYtMoney(int ytMoney) {
+    public void setYtMoney(double ytMoney) {
         this.ytMoney = ytMoney;
     }
 

@@ -7,8 +7,8 @@ public class AccountWater {
     private String phone;
     private int category;
     private String info;
-    private int cMoney;
-    private int rMoney;
+    private double cMoney;
+    private double rMoney;
     private Date tTime;
 
     public long getId() {
@@ -43,19 +43,19 @@ public class AccountWater {
         this.info = info;
     }
 
-    public int getcMoney() {
+    public double getcMoney() {
         return cMoney;
     }
 
-    public void setcMoney(int cMoney) {
+    public void setcMoney(double cMoney) {
         this.cMoney = cMoney;
     }
 
-    public int getrMoney() {
+    public double getrMoney() {
         return rMoney;
     }
 
-    public void setrMoney(int rMoney) {
+    public void setrMoney(double rMoney) {
         this.rMoney = rMoney;
     }
 

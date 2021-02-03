@@ -101,5 +101,7 @@ public interface ShenSuService {
 
     public int getShenSuCount(String phone);
 
+    public ShenSu getShenSuBystid(String stid);
+
 
 }

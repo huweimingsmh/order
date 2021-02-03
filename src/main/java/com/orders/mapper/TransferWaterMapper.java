@@ -13,7 +13,7 @@ public interface TransferWaterMapper {
 
     public void addTransferWater(TransferWater water) throws SQLException;
 
-    public TransferWater getTransferWater(long id) throws SQLException;
+    public TransferWater getTransferWaterById(long id) throws SQLException;
 
     public void updateTransferState(TransferChangeVo vo) throws SQLException;
 

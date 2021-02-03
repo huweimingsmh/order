@@ -29,8 +29,8 @@ public class AccountController {
 
     @RequestMapping(value = "/ainfo", produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<AccountWater> getAccountWaterInfo(@RequestBody String phone) {
-
+    public List<AccountWater> getAccountWaterInfo(@RequestBody Map<String,Object> param) {
+        String phone=(String)param.get("phone");
         return accountService.getAccountWater(phone);
     }
 
@@ -53,8 +53,8 @@ public class AccountController {
 
     @RequestMapping(value = "/tinfo", produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<TransferWater> getTransferWaterInfo(@RequestBody String phone) {
-
+    public List<TransferWater> getTransferWaterInfo(@RequestBody Map<String,Object> param) {
+        String phone=(String)param.get("phone");
         return accountService.getTransferWater(phone);
     }
 

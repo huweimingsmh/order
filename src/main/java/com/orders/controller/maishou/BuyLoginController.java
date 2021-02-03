@@ -8,6 +8,7 @@ import com.orders.vo.BuyRegisterVo;
 import com.orders.vo.ForgetPwdVo;
 import com.orders.vo.LoginVo;
 import com.orders.vo.RegisterVo;
+import com.orders.vo.task.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 //@RestController
 @Controller
@@ -35,7 +37,12 @@ public class BuyLoginController  {//implements LoginController
             }
             int result=buyService.login(vo,session);
             if(result==StateCode.OK){
-                return   ToolsUtils.forwordPage("url","home.html");
+                RequestParam param=(RequestParam) session.getAttribute("guqqi");
+                if(null==param) {
+                    return ToolsUtils.forwordPage("url", "home.html");
+                }else{
+                    return ToolsUtils.forwordPage("url", "home.html");
+                }
             }
             if(result==StateCode.PHONE_ERROR) {
                 return ToolsUtils.showError("手机号码错误,请输入正确手机号码!");
@@ -84,5 +91,13 @@ public class BuyLoginController  {//implements LoginController
             }
         }
         return   ToolsUtils.forwordPage("url","error.html");
+    }
+
+    @RequestMapping(value="/bdv",  produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public void bangDingVip(@RequestBody Map<String,Object> param){
+        String bphone=(String)param.get("bphone");
+        String vip=(String)param.get("vip");
+        buyService.bangDingVip(bphone,vip);
     }
 }

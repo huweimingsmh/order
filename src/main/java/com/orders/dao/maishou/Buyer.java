@@ -1,6 +1,7 @@
 package com.orders.dao.maishou;
 
 import java.util.Date;
+import java.util.List;
 
 public class Buyer {
     private long id;
@@ -14,6 +15,8 @@ public class Buyer {
     private Date cTime;
     private int msgCount;
     private int shensuCount;
+
+    //private List<Tabbao> tabbaoList;
 
     public int getMsgCount() {
         return msgCount;
@@ -102,4 +105,12 @@ public class Buyer {
     public void setcTime(Date cTime) {
         this.cTime = cTime;
     }
+
+//    public List<Tabbao> getTabbaoList() {
+//        return tabbaoList;
+//    }
+//
+//    public void setTabbaoList(List<Tabbao> tabbaoList) {
+//        this.tabbaoList = tabbaoList;
+//    }
 }

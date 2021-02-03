@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.orders.mapper.BuyerMapper">
+<mapper namespace="com.orders.mapper.OrderMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+  <!--
     <select id="getBuyer" resultType="com.orders.dao.maishou.Buyer">
         SELECT * FROM buyer where phone=#{phone}
     </select>
+
 
     <insert id="registerBuyer" parameterType="com.orders.dao.maishou.Buyer"
             useGeneratedKeys="true" keyProperty="id">
@@ -15,4 +17,53 @@
     <update id="updatePwd" parameterType="com.orders.dao.maishou.Buyer">
         update buyer set pwd=#{pwd} where id=#{id}
     </update>
+    -->
+
+    <select id="getOrderByStid" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where id=#{1}
+    </select>
+
+    <select id="getOrderSTID" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where oid=#{1}
+    </select>
+
+    <select id="getOrderByDownTime" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where phone=#{1} cTime between #{2} and #{3}
+    </select>
+
+     <select id="getOrderBySubmitTime" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where phone=#{1} sTime between #{2} and #{3}
+    </select>
+
+     <select id="getOrderByState" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where phone=#{1} and state=#{2}
+    </select>
+
+
+     <select id="getOrderByGoodsName" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where phone=#{1} and goodsName=#{2}
+    </select>
+
+
+     <select id="getOrderByShopName" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where phone=#{1} and shopName=#{2}
+    </select>
+
+
+     <select id="getOrderByVip" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where phone=#{1} and taobaoVip=#{2}
+    </select>
+
+    <insert id="createOrder" parameterType="com.orders.dao.Order"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into orders(id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType)
+        values (#{id},#{platform},#{taobaoVip},#{oid},#{tid},#{sjPhone},#{bPhone},#{image},#{yaJin},#{sMoney},
+        #{yongJin},#{state},#{cTime},#{sTime},#{rTime},#{goodsName},#{shopName},#{tTime})
+    </insert>
+
+   <select id="getOrderByBuyer" resultType="com.orders.dao.Order">
+        SELECT id,platform,taobaoVip,oid,tid,sjPhone,bPhone,image,yaJin,sMoney,yongJin,state,cTime,sTime,rTime,goodsName,shopName,tType FROM orders where bPhone=#{1} and state !=5
+    </select>
+     
 </mapper>
+

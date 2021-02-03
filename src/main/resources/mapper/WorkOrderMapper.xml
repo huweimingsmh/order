@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orders.mapper.NoticeMapper">
+    <!-- application.yml中type-aliases-package:未配置则需要用全名-->
+
+
+
+    <select id="getWorkOrders" resultType="com.orders.dao.WorkOrder">
+        SELECT id,bphone,weiXinQun,wenTiDes,huiFu,img,cTime,shTime,shenHe FROM workOrder where phone=#{1}
+    </select>
+
+
+    <insert id="createWorkOrder" parameterType="com.orders.dao.WorkOrder"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into workOrder(bphone,weiXinQun,wenTiDes,huiFu,img,cTime,shTime,shenHe)
+        values (#{bphone},#{weiXinQun},#{wenTiDes},#{huiFu},#{img},#{cTime},#{shTime},#{shenHe})
+    </insert>
+
+    <update id="huiFuWorkOrder" parameterType="com.orders.dao.WorkOrder">
+        update workOrder  <set>
+        
+        <if test="huiFu != null">
+            aDes = #{huiFu},
+        </if>
+        
+        where id=#{id}
+    </set>
+    </update>
+
+</mapper>

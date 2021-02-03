@@ -20,12 +20,13 @@ public class ShenSuController {
     private ShenSuService shenSuService;
     /**
      * 获得申诉列表
-     * @param phone
+     * @param
      * @return
      */
     @RequestMapping(value="/sjgssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuList(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuList(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSu(phone);
         }
@@ -34,7 +35,8 @@ public class ShenSuController {
 
     @RequestMapping(value="/sjgsslbs",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListBySend(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuListBySend(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSuByBuilder(phone);
         }
@@ -43,7 +45,8 @@ public class ShenSuController {
 
     @RequestMapping(value="/sjgsslrs",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListByRev(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuListByRev(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSuByAccpter(phone);
         }
@@ -52,7 +55,8 @@ public class ShenSuController {
 
     @RequestMapping(value="/gsjssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListBySJ(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuListBySJ(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSuBySJ(phone);
         }
@@ -61,7 +65,8 @@ public class ShenSuController {
 
     @RequestMapping(value="/gbssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListByBuy(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuListByBuy(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSuByB(phone);
         }
@@ -82,7 +87,8 @@ public class ShenSuController {
 
     @RequestMapping(value="/stidgssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListBySTID(@RequestBody String stid){
+    public List<ShenSuRVo> getShenSuListBySTID(@RequestBody  Map<String,Object> param){
+        String stid=(String)param.get("stid");
         if(null!=stid) {
             return   shenSuService.getShenSuByStid(stid);
         }
@@ -91,7 +97,8 @@ public class ShenSuController {
 
     @RequestMapping(value="/gsjpssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListBySJPhone(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuListBySJPhone(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSuBySJPhone(phone);
         }
@@ -100,7 +107,8 @@ public class ShenSuController {
     }
     @RequestMapping(value="/gbpssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListByBuyPhone(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSuListByBuyPhone(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSuByBPhone(phone);
         }
@@ -109,7 +117,8 @@ public class ShenSuController {
     }
     @RequestMapping(value="/gsnssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListByShopName(@RequestBody String shopName){
+    public List<ShenSuRVo> getShenSuListByShopName(@RequestBody Map<String,Object> param){
+        String shopName=(String)param.get("shopName");
         if(null!=shopName) {
             return   shenSuService.getShenSuByShopName(shopName);
         }
@@ -118,7 +127,8 @@ public class ShenSuController {
     }
     @RequestMapping(value="/getvipssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListByTaobaoVip(@RequestBody String vip){
+    public List<ShenSuRVo> getShenSuListByTaobaoVip(@RequestBody Map<String,Object> param){
+        String vip=(String)param.get("vip");
         if(null!=vip) {
             return   shenSuService.getShenSuByVip(vip);
         }
@@ -127,7 +137,8 @@ public class ShenSuController {
     }
     @RequestMapping(value="/goidssls",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShenSuRVo> getShenSuListByOid(@RequestBody String oid){
+    public List<ShenSuRVo> getShenSuListByOid(@RequestBody Map<String,Object> param){
+        String oid=(String)param.get("oid");
         if(null!=oid) {
             return   shenSuService.getShenSuByOid(oid);
         }
@@ -136,7 +147,8 @@ public class ShenSuController {
     }
 
 
-    public List<ShenSuRVo> getShenSu(@RequestBody String phone){
+    public List<ShenSuRVo> getShenSu(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone) {
             return   shenSuService.getShenSu(phone);
         }

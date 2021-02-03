@@ -2,31 +2,22 @@ package com.orders.dao;
 
 public class ServiceCost {
 
-    private String sCost;
-    private String eCost;
-    private int cost;
+    private String name;
+    private String cost;
 
-    public String getsCost() {
-        return sCost;
+    public String getName() {
+        return name;
     }
 
-    public void setsCost(String sCost) {
-        this.sCost = sCost;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String geteCost() {
-        return eCost;
-    }
-
-    public void seteCost(String eCost) {
-        this.eCost = eCost;
-    }
-
-    public int getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 }

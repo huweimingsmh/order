@@ -9,10 +9,15 @@
     <insert id="registerBuyer" parameterType="com.orders.dao.maishou.Buyer"
         useGeneratedKeys="true" keyProperty="id">
         insert into buyer(phone,weiXin,taobaoVip,pwd,sex,superId,branchNo,cTime)
-        values (#{phone},#{weiXin},#{taobaoVip},#{pwd},#{sex},#{superId},#{branchNo,#{cTime})
+        values (#{phone},#{weiXin},#{taobaoVip},#{pwd},#{sex},#{superId},#{branchNo},#{cTime})
     </insert>
 
     <update id="updatePwd" parameterType="com.orders.dao.maishou.Buyer">
         update buyer set pwd=#{pwd} where id=#{id}
+    </update>
+
+
+    <update id="updateBuyVip" parameterType="com.orders.dao.maishou.Buyer">
+        update buyer set taobaoVip=#{2} where phone=#{1}
     </update>
 </mapper>

@@ -3,10 +3,10 @@ package com.orders.vo;
 import com.orders.dao.Dao;
 
 public class YongJiRechangeVo implements Dao {
-    private int selfMoney;
-    private int yongJiMoney;
+    private double selfMoney;
+    private double yongJiMoney;
 
-    public YongJiRechangeVo(int selfMoney, int yongJiMoney) {
+    public YongJiRechangeVo(double selfMoney, double yongJiMoney) {
         this.selfMoney = selfMoney;
         this.yongJiMoney = yongJiMoney;
     }
@@ -15,19 +15,19 @@ public class YongJiRechangeVo implements Dao {
 
     }
 
-    public int getSelfMoney() {
+    public double getSelfMoney() {
         return selfMoney;
     }
 
-    public void setSelfMoney(int selfMoney) {
+    public void setSelfMoney(double selfMoney) {
         this.selfMoney = selfMoney;
     }
 
-    public int getYongJiMoney() {
+    public double getYongJiMoney() {
         return yongJiMoney;
     }
 
-    public void setYongJiMoney(int yongJiMoney) {
+    public void setYongJiMoney(double yongJiMoney) {
         this.yongJiMoney = yongJiMoney;
     }
 }

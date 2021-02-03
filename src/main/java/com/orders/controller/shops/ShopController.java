@@ -27,8 +27,9 @@ public class ShopController {
 
     @RequestMapping(value="/gshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<Shop> getShop(@RequestBody String phone) {
+    public List<Shop> getShop(@RequestBody Map<String,Object> param) {
 
+        String phone=(String)param.get("phone");
         return shopService.getShop(phone);
     }
 
@@ -50,8 +51,8 @@ public class ShopController {
 
     @RequestMapping(value="/delshop",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public void delShop(@RequestBody String id) {
-
+    public void delShop(@RequestBody Map<String,Object> param) {
+       String id=(String)param.get("id");
         shopService.delShop(Long.valueOf(id));
 
     }

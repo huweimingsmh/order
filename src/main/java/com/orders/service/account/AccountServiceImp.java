@@ -46,7 +46,7 @@ public class AccountServiceImp implements AccountService {
 
     public TransferWater getTransferWater(long id) {
         try{
-        return transferMapper.getTransferWater(id);
+        return transferMapper.getTransferWaterById(id);
         }catch(SQLException sql){
             log.error(sql.getMessage());
         }catch (Exception e){
@@ -58,7 +58,7 @@ public class AccountServiceImp implements AccountService {
     @Override
     public List<AccountWater> getAccountWater(String starTime, String endTime, String phone) {
         try {
-            return accountMapper.getAccountWater(starTime, endTime, phone);
+            return accountMapper.getAccountWaterByTime(starTime, endTime, phone);
         }catch(SQLException sql){
             log.error(sql.getMessage());
         }catch (Exception e){
@@ -76,7 +76,7 @@ public class AccountServiceImp implements AccountService {
     @Override
     public List<AccountWater> getAccountWater(String phone, int category) {
         try{
-        return accountMapper.getAccountWater(phone, category);
+        return accountMapper.getAccountWaterByCategory(phone, category);
         }catch(SQLException sql){
             log.error(sql.getMessage());
         }catch (Exception e){
@@ -184,7 +184,7 @@ public class AccountServiceImp implements AccountService {
         }
     }
 
-    private void shangJiaAccountHelp(String phone, int category, int money) {
+    private void shangJiaAccountHelp(String phone, int category, double money) {
         try{
         switch (category) {
             case AccountCategory.I_RECHARGE:

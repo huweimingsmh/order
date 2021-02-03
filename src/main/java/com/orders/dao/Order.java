@@ -3,7 +3,7 @@ package com.orders.dao;
 import java.util.Date;
 
 public class Order {
-    private long id;
+    private String id;
     private String platform;
     private String taobaoVip;
     private String oId;
@@ -11,22 +11,31 @@ public class Order {
     private String sjPhone;
     private String bPhone;
     private String image;
-    private int yaJin;
-    private int sMoney;
-    private int yongJin;
+    private double yaJin;
+    private double sMoney;
+    private double yongJin;
     private int state;
     private int tType;
     private Date cTime;
     private Date sTime;
+    private Date rTime;
     private String goodsName;
     private String shopName;
 
 
-    public long getId() {
+    public Date getrTime() {
+        return rTime;
+    }
+
+    public void setrTime(Date rTime) {
+        this.rTime = rTime;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -78,27 +87,27 @@ public class Order {
         this.bPhone = bPhone;
     }
 
-    public int getYaJin() {
+    public double getYaJin() {
         return yaJin;
     }
 
-    public void setYaJin(int yaJin) {
+    public void setYaJin(double yaJin) {
         this.yaJin = yaJin;
     }
 
-    public int getsMoney() {
+    public double getsMoney() {
         return sMoney;
     }
 
-    public void setsMoney(int sMoney) {
+    public void setsMoney(double sMoney) {
         this.sMoney = sMoney;
     }
 
-    public int getYongJin() {
+    public double getYongJin() {
         return yongJin;
     }
 
-    public void setYongJin(int yongJin) {
+    public void setYongJin(double yongJin) {
         this.yongJin = yongJin;
     }
 

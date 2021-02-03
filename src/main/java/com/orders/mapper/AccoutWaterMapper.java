@@ -11,9 +11,9 @@ public interface AccoutWaterMapper {
 
     public List<AccountWater> getAccountWater(String phone) throws SQLException;
 
-    public List<AccountWater> getAccountWater(String starTime,String endTime,String phone) throws SQLException;
+    public List<AccountWater> getAccountWaterByTime(String starTime,String endTime,String phone) throws SQLException;
 
     public void addAccountWater(AccountWater water) throws SQLException;
 
-    public List<AccountWater> getAccountWater(String phone,int category) throws SQLException;
+    public List<AccountWater> getAccountWaterByCategory(String phone,int category) throws SQLException;
 }

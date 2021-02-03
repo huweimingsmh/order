@@ -7,6 +7,7 @@ import com.orders.mapper.ShangJiaMapper;
 import com.orders.service.ShangJiaService;
 import com.orders.service.maishou.BuyServiceImp;
 import com.orders.utils.statecode.StateCode;
+import com.orders.utils.statecode.TaskType;
 import com.orders.utils.tools.ServiceTools;
 import com.orders.vo.ForgetPwdVo;
 import com.orders.vo.LoginVo;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Service(value="shangJiaService")
 public class ShangJiaServiceImp implements ShangJiaService {
@@ -26,6 +29,7 @@ public class ShangJiaServiceImp implements ShangJiaService {
 
     @Autowired
     private ShangJiaMapper shangJiaMapper;
+    private ReentrantReadWriteLock rwLock=new ReentrantReadWriteLock();
     @Override
     public ShangJia getShangJia(String phone) {
         try{
@@ -76,6 +80,28 @@ public class ShangJiaServiceImp implements ShangJiaService {
        }else{
          return   shangJiaMapper.getShensuCount(phone);
        }
+    }
+
+    @Override
+    public int kouFeiSj(double total, String phone) {
+        Lock wLock=rwLock.writeLock();
+        wLock.lock();
+        try {
+            ShangJia sj = shangJiaMapper.getShangJia(phone);
+            if(null!=sj){
+                if(sj.getSelfMoney()>=total){
+                    double tempMoney=sj.getSelfMoney()-total;
+                    sj.setSelfMoney(tempMoney);
+                    shangJiaMapper.updateSelfMoney(phone,sj.getSelfMoney());
+                    return TaskType.KOUFEI_SUCC;
+                }
+            }
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }finally{
+            wLock.unlock();
+        }
+        return TaskType.NOT_YUE;
     }
 
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.orders.mapper.BuyerMapper">
+<mapper namespace="com.orders.mapper.NoticeMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
 
     <select id="getNoticList" resultType="com.orders.vo.NoticVo">
         SELECT id,state,cTime,title FROM notice
     </select>
 
-     <select id="getNoticList" resultType="com.orders.vo.NoticVo">
-        SELECT state,cTime,title,context FROM notice
+     <select id="readNotic" resultType="com.orders.vo.NoticVo">
+        SELECT state,cTime,title,context FROM notice where id=#{1}
     </select>
 
 

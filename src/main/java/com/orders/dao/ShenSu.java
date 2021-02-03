@@ -19,6 +19,34 @@ public class ShenSu {
     private String shopName;
     private String oId;
     private String ssTime;
+    private String chuLi;
+    private String chuLiTime;
+    private String chuLiRes;
+
+
+    public String getChuLi() {
+        return chuLi;
+    }
+
+    public void setChuLi(String chuLi) {
+        this.chuLi = chuLi;
+    }
+
+    public String getChuLiTime() {
+        return chuLiTime;
+    }
+
+    public void setChuLiTime(String chuLiTime) {
+        this.chuLiTime = chuLiTime;
+    }
+
+    public String getChuLiRes() {
+        return chuLiRes;
+    }
+
+    public void setChuLiRes(String chuLiRes) {
+        this.chuLiRes = chuLiRes;
+    }
 
     public long getId() {
         return id;

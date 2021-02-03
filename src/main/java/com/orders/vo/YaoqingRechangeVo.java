@@ -4,11 +4,11 @@ import com.orders.dao.Dao;
 
 public class YaoqingRechangeVo implements Dao {
 
-    private int selfMoney;
-    private int yaoqingMoney;
+    private double selfMoney;
+    private double yaoqingMoney;
 
 
-    public YaoqingRechangeVo(int selfMoney, int yaoqingMoney) {
+    public YaoqingRechangeVo(double selfMoney, double yaoqingMoney) {
         this.selfMoney = selfMoney;
         this.yaoqingMoney = yaoqingMoney;
     }
@@ -17,19 +17,19 @@ public class YaoqingRechangeVo implements Dao {
 
     }
 
-    public int getSelfMoney() {
+    public double getSelfMoney() {
         return selfMoney;
     }
 
-    public void setSelfMoney(int selfMoney) {
+    public void setSelfMoney(double selfMoney) {
         this.selfMoney = selfMoney;
     }
 
-    public int getYaoqingMoney() {
+    public double getYaoqingMoney() {
         return yaoqingMoney;
     }
 
-    public void setYaoqingMoney(int yaoqingMoney) {
+    public void setYaoqingMoney(double yaoqingMoney) {
         this.yaoqingMoney = yaoqingMoney;
     }
 }

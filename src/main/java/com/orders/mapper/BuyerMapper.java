@@ -15,8 +15,10 @@ public interface BuyerMapper {
 
     public int updatePwd(Buyer buyer)throws SQLException;
 
-    public int getMsgCount(String phone);
+    public int getMsgCount(String phone)throws SQLException;
 
-    public int getShensuCount(String phone);
+    public int getShensuCount(String phone)throws SQLException;
+
+    public int updateBuyVip(Buyer buy)throws SQLException;
 }
 

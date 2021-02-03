@@ -1,18 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.orders.mapper.BuyerMapper">
+<mapper namespace="com.orders.mapper.TaskMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
-    <select id="getBuyer" resultType="com.orders.dao.maishou.Buyer">
-        SELECT * FROM buyer where phone=#{phone}
+    <select id="getTask" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where id=#{id}
     </select>
 
-    <insert id="registerBuyer" parameterType="com.orders.dao.maishou.Buyer"
+    <insert id="addTask" parameterType="com.orders.dao.Tasks"
             useGeneratedKeys="true" keyProperty="id">
-        insert into buyer(phone,weiXin,taobaoVip,pwd,sex,superId,branchNo,cTime)
-        values (#{phone},#{weiXin},#{taobaoVip},#{pwd},#{sex},#{superId},#{branchNo,#{cTime})
+        insert into tasks(goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount)
+        values (#{goodsInfos},#{souSuo},#{findGoods},#{pingJia},#{zengZhi},#{pushTime},#{liuYan},#{shenHe}.#{fanKuan},
+        #{totalCost},#{serviceCost},#{phone},#{state},#{getState},#{shopName},#{goodsName},#{taskType},#{cTime},#{sTime},#{tTime},#{shenHer},#{orderCount})
     </insert>
 
-    <update id="updatePwd" parameterType="com.orders.dao.maishou.Buyer">
-        update buyer set pwd=#{pwd} where id=#{id}
+    <update id="updateTaskState" >
+        update tasks set state=#{2} where phone=#{1}
     </update>
+
+    <select id="getTaskByState" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and state=#{2}
+    </select>
+
+    <select id="getTaskByType" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and taskType=#{2}
+    </select>
+
+
+    <select id="getTaskByGetState" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and getState=#{2}
+    </select>
+
+     <select id="getTaskByShopName" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and shopName=#{2}
+    </select>
+     <select id="getTaskByGoodsName" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and goodsName=#{2}
+    </select>
+       <select id="getTaskByTid" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where id=#{1}
+    </select>
+        <select id="getTaskByCTime" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and cTime between #{2} and #{3}
+    </select>
+
+    <select id="getTaskByTTime" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where phone=#{1} and tTime between #{2} and #{3}
+    </select>
+
+     <select id="getTaskInfo" resultType="com.orders.dao.Tasks">
+        SELECT id,goodsInfos,souSuo,findGoods,pingJia,zengZhi,pushTime,liuYan,shenHe,fanKuan,totalCost,
+        serviceCost,phone,state,getState,shopName,goodsName,taskType,cTime,sTime,tTime,shenHer,orderCount FROM tasks where id=#{1}
+    </select>
+
 </mapper>

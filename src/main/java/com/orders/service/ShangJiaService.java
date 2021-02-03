@@ -26,6 +26,8 @@ public interface ShangJiaService extends LoginService  {
 
     public int getShensuCount(String phone, HttpSession session);
 
+    public int kouFeiSj(double total,String phone);
+
 
 
 }

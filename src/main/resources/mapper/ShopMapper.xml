@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.orders.mapper.BuyerMapper">
+<mapper namespace="com.orders.mapper.ShopMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
     <select id="getShop" resultType="com.orders.dao.shops.Shop">
         SELECT id,phone,name,wangWang,state,sDesc,sWher,address,sPhone,image,platform,sTime FROM shop where phone=#{0}

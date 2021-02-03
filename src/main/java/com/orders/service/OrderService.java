@@ -1,30 +1,49 @@
 package com.orders.service;
 
 import com.orders.dao.Order;
+import com.orders.dao.ShenSu;
+import com.orders.vo.order.JieDanVo;
+import com.orders.vo.order.OrderInfo;
+import com.orders.vo.order.OrderShowVo;
+import com.orders.vo.order.OrderStateCountVo;
 
 import java.util.List;
 
 public interface OrderService {
 
-    public Order getOrderByStid(String stid);
+    public OrderShowVo getOrderByStid(String stid);
 
-    public String getOrderSTID(String oid);
+    public OrderShowVo getOrderSTID(String oid);
 
-    public List<Order> getOrderByDownTime(String phone, String startTime, String endTime);
+    public List<OrderShowVo> getOrderByDownTime(String phone, String startTime, String endTime);
 
-    public List<Order> getOrderBySubmitTime(String phone,String startTime,String endTime);
+    public List<OrderShowVo> getOrderBySubmitTime(String phone,String startTime,String endTime);
 
-    public List<Order> getOrderByState(String phone,int state);
+    public List<OrderShowVo> getOrderByState(String phone,int state);
 
-    public List<Order> getOrderByGoodsName(String phone,String goodsName);
+    public List<OrderShowVo> getOrderByGoodsName(String phone,String goodsName);
 
-    public List<Order>  getOrderByShopName(String phone,String shopName);
+    public List<OrderShowVo>  getOrderByShopName(String phone,String shopName);
 
-    public List<Order> getOrderByVip(String phone,String vip);
+    public List<OrderShowVo> getOrderByVip(String phone,String vip);
 
-    public void createOrder();
+    public void createOrder(JieDanVo vo);
 
-    public int getOrderRefundCount(String phone);
+    public OrderStateCountVo getOrderRefundCount(String phone);
 
-    public int getOrderRewardCount(String phone);
+    //public int getOrderRewardCount(String phone);
+
+    public OrderInfo showOrderInfo(String stid);
+
+    public void faFangKuan(String stid);
+
+    public void notFaFangKuan(String stid);
+
+    public OrderStateCountVo getOrderStateTongJi(String tid);
+
+    public List<OrderShowVo> getOrderByBuyer(String phone);
+
+    public void downOrder(JieDanVo jieDan);
+
+
 }

@@ -29,6 +29,9 @@ create table shensu(
  	oId   varchar(30) comment '订单号',
  	shopName varchar(100) comment '店铺名',
  	ssTime datetime comment '申诉时间',
+ 	chuLi  varchar(30) comment '平台处理人',
+ 	chuLiTime varchar(20) comment '平台处理时间',
+ 	chuLiRes varchar(300) comment '平台处理结果',
  	
  	index su_inx(ssPhone),
  	index a_inx(aPhone),
@@ -100,8 +103,8 @@ create table orders(
 	id varchar(30) not null primary key comment '子任务编号',
 	platform varchar(30) not null comment '平台',
 	taobaoVip varchar(100) comment '接单账号',
-	oId varchar(30) comment '订单号',
-	tId varchar(30)  not null comment '主任务号',
+	oid varchar(30) comment '订单号',
+	tid varchar(30)  not null comment '主任务号',
 	sjPhone varchar(11) not null comment '商家手机号',
 	bPhone varchar(11) not null comment '买手手机号',
 	image LONGTEXT not null comment '任务主图',
@@ -111,6 +114,7 @@ create table orders(
 	state tinyint comment '子任务状态',
 	cTime datetime comment '接单时间',
 	sTime datetime comment '提交时间',
+	rTime dateTime comment '奖励核实时间',
 	goodsName varchar(100) comment '商品名称',
 	shopName varchar(100) comment '店铺名称',
 	tType  int comment "任务类型",
@@ -122,29 +126,35 @@ create table orders(
 	index b_p_in_o(bPhone)
 )engine=innodb  charset=utf8
 
-create table task(
-	id varchar(30) not null primary key comment '任务编号',
-	goodsInfo LONGTEXT not null comment '商品信息',
-	taskInfo LONGTEXT not null comment '任务信息',
-	findGoods LONGTEXT not null comment '找到主商品的设置',
-	goodsEva  LONGTEXT not null comment '商品评价',
-	incServic LONGTEXT not null comment '增值服务',
-	sjLy      text  comment '商家留言',
-	taskSet   LONGTEXT not null comment '任务设置',
-	rollBackMoney tinyint not null comment '返款方式，0：平台返款,1:商家手动返款',
-	state tinyint comment '任务状态',
-	shopName varchar(100) comment '店铺名',
-	goodsName varchar(100) comment '商品名',
-	pushMonth tinyint comment '发布方式',
-	tType tinyint comment '任务类型',
-	gotState tinyint comment '领取状态',
-	phone  varchar(11) comment '商家手机号',
-	cTime datetime comment '任务创建时间',
-	stTime datetime comment '任务开始时间',
-	seTime datetime comment '任务结束时间',
-	index p_inx_t(phone)
 
+create table tasks(
+	id varchar(30) not null primary key comment '任务编号',
+	goodsInfos LONGTEXT not null comment "商品信息",
+	souSuo LONGTEXT not null comment '关键字或淘口令',
+	findGoods LONGTEXT comment '查询商品信息',
+	pingJia LONGTEXT comment '评价',
+    zengZhi LONGTEXT comment '增值服务',
+    pushTime LONGTEXT comment '发布时间',
+    liuYan varchar(300) comment '商家留言',
+    shenHe varchar(300) comment '商品核实连接',
+    fanKuan int comment '返款方式,1:平台系统返款+买号安全',
+    totalCost double comment '总费用',
+    serviceCost double comment '服务费',
+    phone varchar(11) comment '商家手机号',
+    state int comment '任务状态',
+    getState int comment '领取状态,1:已领取完0:未领取完',
+    shopName varchar(100) comment '店铺名',
+    goodsName varchar(100) comment '商品名',
+    taskType int comment '任务类型',
+    cTime datetime comment '任务创建时间',
+    sTime datetime comment '审核时间',
+    tTime datetime comment '发布时间',
+    shenHer varchar(100) comment '审核操作人',
+    orderCount int comment '已接单数',
+    index sj_phone_inx(phone)
 )engine=innodb  charset=utf8
+
+
 
 create table notice(
 	id bigint not null primary key AUTO_INCREMENT comment '商家公告ID',
@@ -199,3 +209,22 @@ create table serviceCost(
 	cost int not null comment '服务费',
 	index s_e_inx(sCost,eCost)
 )engine=innodb charset=utf8
+
+
+create table serviceCost(
+	name varchar(30) not null comment '收费服务目录',
+	cost varchar(1000) not null comment  '服务费用'
+)engine=innodb charset=utf8
+
+create table workOrder(
+	id bigint  not null primary key comment '编号',
+	bphone varchar(11) not null comment '买手手机号',
+	weiXinQun varchar(30) not null comment '微信群名',
+	wenTiDes varchar(1000) not null comment '问题描述',
+	huiFu varchar(1000) not null comment '问题回复',
+	img LONGTEXT comment '问题图片',
+	cTime varchar(30) comment '工单生成时间',
+	shTime varchar(30) comment '审核时间',
+	shenHe varchar(30) comment '审核人',
+	index bp_inx(bphone)
+)engine=innodb charset=urt8

@@ -7,10 +7,10 @@ public class ShangJia {
     private String phone;
     private String pwd;
     private String qq;
-    private int selfMoney;
-    private int yongjinMoney;
-    private int zengzhiMoney;
-    private int yaoqingMoney;
+    private double selfMoney;
+    private double yongjinMoney;
+    private double zengzhiMoney;
+    private double yaoqingMoney;
     private String superCode;
     private String branchNo;
     private int sCheck;
@@ -66,35 +66,35 @@ public class ShangJia {
         this.qq = qq;
     }
 
-    public int getSelfMoney() {
+    public double getSelfMoney() {
         return selfMoney;
     }
 
-    public void setSelfMoney(int selfMoney) {
+    public void setSelfMoney(double selfMoney) {
         this.selfMoney = selfMoney;
     }
 
-    public int getYongjinMoney() {
+    public double getYongjinMoney() {
         return yongjinMoney;
     }
 
-    public void setYongjinMoney(int yongjinMoney) {
+    public void setYongjinMoney(double yongjinMoney) {
         this.yongjinMoney = yongjinMoney;
     }
 
-    public int getZengzhiMoney() {
+    public double getZengzhiMoney() {
         return zengzhiMoney;
     }
 
-    public void setZengzhiMoney(int zengzhiMoney) {
+    public void setZengzhiMoney(double zengzhiMoney) {
         this.zengzhiMoney = zengzhiMoney;
     }
 
-    public int getYaoqingMoney() {
+    public double getYaoqingMoney() {
         return yaoqingMoney;
     }
 
-    public void setYaoqingMoney(int yaoqingMoney) {
+    public void setYaoqingMoney(double yaoqingMoney) {
         this.yaoqingMoney = yaoqingMoney;
     }
 

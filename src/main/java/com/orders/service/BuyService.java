@@ -27,7 +27,7 @@ public interface BuyService extends LoginService {
 
     public int getShensuCount(String phone, HttpSession session);
 
-
+    public void bangDingVip(String bphone,String vip);
 
 
 

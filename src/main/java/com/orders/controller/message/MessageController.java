@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 @Controller
 public class MessageController {
     @Autowired
@@ -24,8 +26,9 @@ public class MessageController {
      */
     @RequestMapping(value="/sjgsm",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShowTaskMessageVo> getSysMsgBysj(@RequestBody String phone){
+    public List<ShowTaskMessageVo> getSysMsgBysj(@RequestBody Map<String,Object> param){
        // int len= phone.length();
+        String phone=(String)param.get("phone");
         if(null!=phone ){
            return  messageService.getSystemMessageBySJ(phone);
 
@@ -39,7 +42,8 @@ public class MessageController {
      */
     @RequestMapping(value="/sjgtm",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShowTaskMessageVo> getSJTaskMsg(@RequestBody String phone){
+    public List<ShowTaskMessageVo> getSJTaskMsg(@RequestBody Map<String,Object> param){
+        String phone=(String)param.get("phone");
         if(null!=phone){
             return  messageService.getSystemMessageBySJ(phone);
 
@@ -53,7 +57,8 @@ public class MessageController {
      */
     @RequestMapping(value="/sjgtmbystid",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<ShowTaskMessageVo> getSJTaskMsgBySTId(@RequestBody String stId){
+    public List<ShowTaskMessageVo> getSJTaskMsgBySTId(@RequestBody Map<String,Object> param){
+        String stId=(String)param.get("stId");
         if(null!=stId){
             return messageService.getTaskMessageBySubTask(stId);
         }
@@ -78,7 +83,8 @@ public class MessageController {
      */
     @RequestMapping(value="/sjgstidbyoid",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getSubTaskIdByOid(@RequestBody String oid){
+    public String getSubTaskIdByOid(@RequestBody Map<String,Object> param){
+        String oid=(String)param.get("oid");
             if(null!=oid){
                 return messageService.getOrderSTID(oid);
             }
@@ -91,7 +97,8 @@ public class MessageController {
      */
     @RequestMapping(value="/sjcallbuyer",  produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<MessageContext> callBuyer(@RequestBody String stid){
+    public List<MessageContext> callBuyer(@RequestBody Map<String,Object> param){
+        String stid=(String)param.get("stid");
         if(null!=stid){
            return messageService.getTaskMessageContext(stid);
         }

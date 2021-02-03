@@ -62,7 +62,7 @@ public class ServiceTools {
         return shangJia;
     }
 
-    public static AccountWater createAccountWater(String phone,int rMoney,int hMoney,int category){
+    public static AccountWater createAccountWater(String phone,double rMoney,double hMoney,int category){
         AccountWater aw = new AccountWater();
         aw.setCategory(category);
         aw.setcMoney(rMoney);

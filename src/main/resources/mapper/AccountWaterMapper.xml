@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.orders.mapper.BuyerMapper">
+<mapper namespace="com.orders.mapper.AccountWaterMapper">
     <!-- application.yml中type-aliases-package:未配置则需要用全名-->
 
     <select id="getAccountWater" resultType="com.orders.dao.AccountWater">
         SELECT id,phone,category,info,cMoney,rMoney,tTime FROM account_water where phone=#{0}
     </select>
 
-     <select id="getAccountWater" resultType="com.orders.dao.AccountWater">
-        SELECT id,phone,category,info,cMoney,rMoney,tTime FROM account_water where phone=#{0} and tTime>=#{1} and tTime<=#{2}
+     <select id="getAccountWaterByTime" resultType="com.orders.dao.AccountWater">
+        SELECT id,phone,category,info,cMoney,rMoney,tTime FROM account_water where phone=#{0} and tTime bwteen #{1} and #{2}
     </select>
 
-      <select id="getAccountWater" resultType="com.orders.dao.AccountWater">
+      <select id="getAccountWaterByCategory" resultType="com.orders.dao.AccountWater">
         SELECT id,phone,category,info,cMoney,rMoney,tTime FROM account_water where phone=#{0} and category=#{1}
     </select>
 
